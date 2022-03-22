@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="edu.study.mapper.boardMapper">
+
+     <select id="listBoard" resultType="boardVO">
+         SELECT bidx
+        	 , bsubject
+        	 , bcontent
+        	 , bwriter
+        	 , bwdate
+        	 
+          FROM board
+          WHERE delny != 'Y'
+          <if test="sarchType != null and sarchType.equals('subject')">
+          and subject like '%'||#{sarchValue}||'%' 
+          
+          
+          </if>
+          <if test="sarchType != null and sarchType.equals('writer')">
+          and bwriter like '%'||#{sarchValue}||'%'
+          </if>
+          
+          order by bidx asc
+          
+    </select>
+    
+    <select id="detailBoard" resultType="boardVO" parameterType="int">
+    	 SELECT bidx
+        	 , bsubject
+        	 , bcontent
+        	 , bwriter
+        	 , bwdate
+        	 
+          FROM board
+          WHERE bidx= #{bidx}
+          
+    </select>
+    
+    <update id="updateBoard" parameterType="boardVO">
+    	UPDATE board
+    	   SET bsubject = #{bsubject}
+    	       ,bcontent = #{bcontent}
+    	WHERE bidx = #{bidx} 
+    
+    </update>
+    
+    <update id="deleteBoard" parameterType="int">
+    	UPDATE board
+    	   SET delny = 'Y'
+    	WHERE bidx = #{bidx} 
+    	    
+    </update>
+    
+    <insert id="insertBoard" parameterType="boardVO">
+		<![CDATA[
+		INSERT INTO 
+					board(
+					 bidx
+					,bsubject
+					,bcontent
+					,bwriter
+					,bwdate
+					,midx
+					)
+			VALUES(
+					BIDX_SEQ.nextval
+					,#{bsubject}
+					,#{bcontent}
+					,'테스터' 
+					,SYSDATE
+					,1)
+		    	
+    ]]>
+    
+    <selectKey resultType="integer" keyProperty="bidx" order="AFTER"> <!--order = AFTER BEFORE-->
+    	SELECT MAX(bidx) FROM board
+    </selectKey>
+        
+    </insert>
+    
+    
+    
+   
+</mapper>

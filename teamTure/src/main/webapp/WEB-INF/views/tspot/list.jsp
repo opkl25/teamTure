@@ -1,96 +1,155 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Home</title>
+<title>지역</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
 </head>
 <body>
-		
-		<%@ include file = "/resources/header.jsp" %>
-		
-		<div class="container bg-light">
-		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-			  <div class="carousel-indicators">
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-			  </div>
-			  <div class="carousel-inner">
-			    <div class="carousel-item active" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/151263622705588.gif" class="d-block w-100" alt="...">
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>은파 호수 공원</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
-			    <div class="carousel-item" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/151263622710923.gif" class="d-block w-100" alt="...">
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>새만금 방조제</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
-			    <div class="carousel-item" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/154503634401788.jpg" class="d-block w-100" alt="...">
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>경암동 철길 마을</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
-			  </div>
-			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Previous</span>
-			  </button>
-			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Next</span>
-			  </button>
-			</div>
-		</div>
-		
-		<hr>
 
-		
-		
-				
-		<div id="jeonbukimg" class="container">
-		<img src="img/jeonbuk2.jpg" alt="전라북도지도"  usemap="#jeonbukmap"  class="img-fluid jeonbuk" />
-			<map name="jeonbukmap">
-					<area shape="poly" class="notimap" href="#" alt="익산시" coords="200,62,216,30,257,27,273,44,272,55,288,64,293,76,289,80,288,92,281,100,281,115,265,124,253,124,244,134,239,139,229,128,212,125,199,125,195,122,205,112,213,94,216,86,208,79,203,67 " >
-					<area shape="poly" class="notimap" href="#" alt="군산시" coords="93,93,160,90,200,64,214,90,201,116,187,128,157,132,130,132,96,117,89,102" onFocus="blur()">
-					<area shape="poly" class="notimap" href="#" alt="김제시" coords="188,127,191,132,183,135,183,140,180,145,176,145,172,147,166,146,163,144,157,144,152,144,146,147,142,151,173,169,173,176,173,184,172,185,180,198,191,194,198,186,207,186,213,196,224,197,234,210,234,213,249,224,256,225,259,210,248,201,247,193,252,187,253,179,250,175,243,170,238,165,238,153,241,151,238,144,240,138,232,133,231,131,222,130,212,127,209,125,196,126,194,123" >
-					<area shape="poly" class="notimap" href="#" alt="부안군" coords="122,168,122,188,98,211,88,210,77,223,63,229,62,239,70,249,78,250,90,250,107,250,121,255,140,254,138,228,158,216,182,211,169,185,159,175,145,171" >
-					<area shape="poly" class="notimap" href="#" alt="고창군" coords="121,257,111,261,104,269,91,271,83,276,72,277,65,281,59,287,46,301,45,306,61,312,55,322,58,330,57,338,67,346,64,355,71,358,76,360,85,351,87,348,99,357,108,352,111,344,123,345,128,337,133,339,135,331,133,326,138,323,142,321,143,315,142,312,141,309,140,304,142,303,141,306,143,306,146,303,147,303,150,301,152,300,153,298,153,295,152,293,152,286,152,285,151,283,150,281,149,280,149,277,153,278,153,276,152,275,151,274,150,271,151,267,151,262,152,260,142,255,129,257">
-					<area shape="poly" class="notimap" href="#" alt="정읍시" coords="183,213,157,219,141,229,141,254,141,255,154,256,155,270,154,267,152,271,155,273,155,279,152,280,155,286,153,293,155,297,164,298,168,295,181,301,182,295,202,297,208,294,204,282,212,277,222,267,226,266,228,274,238,272,241,279,247,281,248,287,254,285,261,288,267,282,258,273,253,268,258,271,261,260,268,257,264,253,268,245,264,235,255,228,238,223,245,224,232,215,226,203,221,198,208,197,206,190,201,188,198,188,196,191,194,193,192,193,191,194,189,195,187,196,182,197,181,198,179,199,180,202">
-					<area shape="poly" class="notimap" href="#" alt="순창군" coords="331,309,318,310,309,306,304,306,295,303,288,305,286,313,278,312,272,295,253,288,248,290,243,284,236,275,226,276,223,269,213,280,206,284,210,293,206,300,200,299,194,299,183,298,193,310,198,316,197,321,208,333,217,332,216,321,221,320,228,308,238,306,243,307,243,320,248,324,240,337,249,341,250,361,245,363,241,367,265,377,272,373,289,362,286,355,291,354,299,348,301,337,310,337,314,328,320,330,327,326,329,319,332,313">
-					<area shape="poly" class="notimap" href="#" alt="남원시" coords="429,285,423,290,421,298,425,307,417,319,409,317,398,314,404,309,389,287,371,283,367,279,362,283,353,276,344,277,346,281,348,296,349,303,338,301,332,309,333,318,328,327,319,331,315,331,312,337,303,339,295,355,288,357,290,371,296,369,302,363,311,373,325,375,328,377,339,375,348,373,354,379,375,355,374,359,392,359,411,375,420,382,427,378,428,359,448,344,449,335,442,324,446,315,444,300,432,286">
-					<area shape="poly" class="notimap" href="#" alt="임실군" coords="325,190,322,195,322,203,325,212,324,219,319,219,316,215,307,211,306,205,299,203,283,209,282,215,279,219,279,237,269,246,266,252,270,258,263,262,258,272,268,282,262,289,273,295,279,311,285,310,286,303,297,299,305,304,316,305,321,308,330,307,338,299,346,301,348,298,346,294,346,283,342,279,342,273,354,273,358,261,357,253,371,250,360,237,352,234,342,235,338,227,332,223,331,205,328,195">
-					<area shape="poly" class="notimap" href="#" alt="장수군" coords="445,170,438,183,430,186,419,179,412,179,410,186,414,200,400,209,396,222,391,227,391,237,395,241,390,255,371,253,360,258,360,266,356,273,362,281,368,273,372,281,390,283,407,308,404,312,413,316,416,315,422,305,420,302,418,294,424,284,428,282,439,261,439,251,448,237,454,215,455,205,470,193,465,183,459,179,450,180">
-					<area shape="poly" class="notimap" href="#" alt="진안군" coords="370,95,363,99,358,106,360,123,358,134,353,139,354,148,350,154,347,165,342,172,338,180,327,189,333,202,335,219,334,222,341,227,345,233,357,233,360,233,363,238,371,246,373,250,390,253,391,242,388,238,387,226,392,222,395,220,394,214,398,208,410,199,408,188,408,177,418,176,427,180,431,184,438,178,444,168,443,161,438,158,430,151,435,148,436,141,420,127,424,126,428,117,419,110,415,113,403,112,393,107,391,92,386,91,383,104,374,100">
-					<area shape="poly" class="notimap" href="#" alt="무주군" coords="420,98,421,109,431,117,427,129,441,141,435,154,447,158,450,177,465,179,474,191,486,169,502,170,521,157,527,147,536,144,545,133,546,123,536,119,531,100,515,104,505,107,492,103,486,97,475,92,477,87,471,88,469,91,466,95,464,93,463,87,462,83,458,81,455,79,451,83,451,87,453,92,454,95,455,98,455,100,455,103,450,103,448,103,444,102,441,99,438,98,433,95,430,89,425,92,423,95">
-					<area shape="poly" class="notimap" href="#" alt="완주군" coords="290,63,294,73,290,79,292,93,278,105,282,118,266,126,252,125,271,133,287,131,299,147,310,149,313,159,322,167,309,189,295,183,282,195,271,198,262,213,258,227,266,233,270,241,270,246,277,238,277,220,281,214,282,206,296,202,306,205,310,212,321,219,323,214,319,195,331,180,336,176,351,141,350,134,354,130,355,103,368,91,373,79,370,73,365,67,363,55,357,53,347,59,333,56,335,63,318,62,306,62,301,59,295,59">
-                    <area shape="poly" class="notimap" href="#" alt="전주시" coords="255,127,240,141,242,149,244,153,242,159,242,167,255,175,257,185,254,192,251,197,252,201,257,206,261,206,269,195,275,193,281,190,288,185,294,181,296,179,308,183,313,175,318,166,309,160,308,152,307,151,302,151,297,149,293,144,285,134,274,135,262,131">
-             </map>
-		
+	<%@ include file = "/resources/header.jsp" %>
+	
+	
+	<nav class="navbar navbar-light bg-white">
+	  <div class="container">
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	  </div>
+	</nav>
+	<div class="collapse" id="navbarToggleExternalContent">
+	  <div class="container bg-white p-4">
+	    
+	    <div class="list-group d-flex align-content-start flex-wrap flex-row bd-highlight mb-3">
+	    	<div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>고창군</strong>
+			      <!-- <small class="d-block text-muted">
+			        <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+			        1:00–2:00pm
+			      </small> -->
+			    </span>
+			  </label>
+			 </div>
+			 <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>군산시</strong>
+			    </span>
+			  </label>
+			 </div>
+			 <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>남원시</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>무주군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>부안군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>순창군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>완주군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>장수군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>전주시</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>정읍시</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>진안군</strong>
+			    </span>
+			  </label>
+			  </div>
+			  
+			  <div class="g-col-1 p-2">
+			  <label class="list-group-item d-flex gap-3">
+			    <input class="form-check-input flex-shrink-0" type="checkbox" value=""  style="font-size: 1.375em;">
+			    <span class="pt-1 form-checked-content">
+			      <strong>타지역</strong>
+			    </span>
+			  </label>
+			  </div>
+			  			  
 		</div>
-		
-		<hr>
-				
-		<div id="add" class="container ">
+	    
+	  </div>
+	</div>
+	
+	<hr>
+	
+	 <div id="add" class="container ">
 		  <div class="row row-cols-1 row-cols-md-4 ">
 		    <div class="col">
 				  <div class="card h-100" >
 				  	<a href="#">
-				  		<img  src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
+				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
 				  	</a>
 				  <div class="card-body">
-				    <h5 class="card-title">지역-위치</h5>
+				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
 				    <p class="card-text">소개글입니다.</p>
 				    
 				  </div>
@@ -98,8 +157,8 @@
 		    </div>
 		    <div class="col">
 				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
+				  	<a href="#" >
+				  		<img src="/controller/img/gunsan/청암산 죽향길.jpg" class="card-img-top img-thumbnail img-fluid listimg " alt="청암산 죽향길" >
 				  	</a>
 				  <div class="card-body">
 				    <h5 class="card-title">지역-위치</h5>
@@ -211,27 +270,8 @@
 		    
 		  </div>
 		</div>
-		
-		<hr>
 
-		
-		<div class="container">
-  			
-  			
-			    
-		</div>
-		
-		
-		
-		
-		
-		
 		<%@ include file = "/resources/footer.jsp" %>
-		
-		
-		
-		
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-		
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

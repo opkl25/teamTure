@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN"
+				"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<!-- Mapper resultType=""의 내용 -->
+        <typeAlias type="edu.study.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="edu.study.vo.LocationVO" alias="locationVO"/>
+        <typeAlias type="edu.study.vo.TspotVO" alias="tspotVO"/>
+        <typeAlias type="edu.study.vo.SarchVO" alias="sarchVO"/>
+    </typeAliases>
+
+</configuration>
