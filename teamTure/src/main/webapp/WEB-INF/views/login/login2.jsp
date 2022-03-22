@@ -21,7 +21,7 @@
                         <img src="img/logo2.png" class="img-fluid">
                     </div>
                     <div class="col-lg-7 text-center py-5">
-                        <h1>Welcom</h1>
+                        <h1>Welcom Back</h1>
 
                         <form>
                             <div class="form-row py-3 pt-5">
