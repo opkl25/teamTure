@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.study.service.TspotService;
-import edu.study.vo.SarchVO;
-import edu.study.vo.TspotVO;
+import team.ture.service.TspotService;
+import team.ture.vo.SarchVO;
+import team.ture.vo.TspotVO;
 
 /**
  * Handles requests for the application home page.

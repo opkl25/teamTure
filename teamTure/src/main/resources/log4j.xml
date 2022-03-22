@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="edu.study.controller">
+	<logger name="team.ture.controller">
 		<level value="info" />
 	</logger>
 	

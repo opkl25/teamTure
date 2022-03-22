@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.study.service.BoardService;
-import edu.study.vo.BoardVO;
-import edu.study.vo.SarchVO;
+import team.ture.service.BoardService;
+import team.ture.vo.BoardVO;
+import team.ture.vo.SarchVO;
 
 /**
  * Handles requests for the application home page.

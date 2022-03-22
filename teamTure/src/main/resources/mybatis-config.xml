@@ -5,10 +5,10 @@
 
 	<typeAliases>
 		<!-- Mapper resultType=""의 내용 -->
-        <typeAlias type="edu.study.vo.BoardVO" alias="boardVO"/>
-        <typeAlias type="edu.study.vo.LocationVO" alias="locationVO"/>
-        <typeAlias type="edu.study.vo.TspotVO" alias="tspotVO"/>
-        <typeAlias type="edu.study.vo.SarchVO" alias="sarchVO"/>
+        <typeAlias type="team.ture.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="team.ture.vo.LocationVO" alias="locationVO"/>
+        <typeAlias type="team.ture.vo.TspotVO" alias="tspotVO"/>
+        <typeAlias type="team.ture.vo.SarchVO" alias="sarchVO"/>
     </typeAliases>
 
 </configuration>

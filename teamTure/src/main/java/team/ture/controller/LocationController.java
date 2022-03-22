@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.study.service.LocationService;
-import edu.study.vo.LocationVO;
-import edu.study.vo.SarchVO;
+import team.ture.service.LocationService;
+import team.ture.vo.LocationVO;
+import team.ture.vo.SarchVO;
 
 /**
  * Handles requests for the application home page.
