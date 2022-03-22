@@ -44,7 +44,7 @@ public class HomeController {
 		
 		
 		
-		return "login/login";
+		return "login/login2";
 	}
 	
 	
