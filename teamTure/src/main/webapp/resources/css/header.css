@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+h2{
+	color:red;
+	
+}
+
+
+h1{
+	color: black;
+}
+
+footer{
+	width: 100%;
+	background-color: #c8d6e5;
+	
+	
+}
+
+.card{
+	width: 18rem;
+	
+}
+
+
+#boardtable{
+	background-color: #ecf0f1;
+}
+
+
+#logo{
+	width: 100%;
+	height: 5vh;
+	top: 3%;
+}
+
+.card-img-top{
+	width:18rem; 
+	height:15rem;
+}
+
+#head{
+	width: 100%;
+	height: 15vh;
+	display : inline-block;
+	margin : 0;
+}
+
+#logindiv{
+	width: 50%;
+	text-align: center;
+	margin: auto;
+
+	
+	
+}
+
+
+
+
+#jeonbukimg{
+	text-align:center;
+	background-color:aliceblue;
+}
+
+#add{
+	text-align:center;
+	background-color: #81ecec;
+	
+}
+
+#frmlogin{
+	text-align:center;
+	background-color: #ffeaa7;
+}
+
+
+.inputarea{ 
+	width: 100%;
+	height: 3vh;
+	top: 10%;
+	left : 25%;
+	
+	
+}
+
+
+#navbarSupportedContent{
+	text-align:center;
+}
+
+#input{
+	border-bottom-left-radius:22px;
+	border-bottom-right-radius:22px;
+	border-top-left-radius:22px;
+	border-top-right-radius:22px;
+	
+	width: 30%;
+	height: 100%;
+	
+}
