@@ -14,7 +14,7 @@
 	
 	<%@ include file = "/resources/header.jsp" %>
 	
-	<div class="container row d-flex flex-wrap justify-content-center">
+	<div class="container d-flex flex-wrap justify-content-center">
 	
 	<div id="map" style="width:100%;height:350px;"  class=" container col">
 	
