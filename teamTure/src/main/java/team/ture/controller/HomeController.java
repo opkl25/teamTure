@@ -70,6 +70,38 @@ public class HomeController {
 		return "member/create";
 	}
 	
+	@RequestMapping(value = "/mypage/nmypage.do", method = RequestMethod.GET)
+	public String nmypage(Locale locale, Model model) {
+		
+		
+		
+		
+		return "mypage/nmypage";
+	}
+	@RequestMapping(value = "/mypage/mypage.do", method = RequestMethod.GET)
+	public String mypage(Locale locale, Model model) {
+		
+		
+		
+		
+		return "mypage/mypage";
+	}
+	@RequestMapping(value = "/login/findpwd.do", method = RequestMethod.GET)
+	public String findpwd(Locale locale, Model model) {
+		
+		
+		
+		
+		return "login/findpwd";
+	}
+	@RequestMapping(value = "/login/findid.do", method = RequestMethod.GET)
+	public String findid(Locale locale, Model model) {
+		
+		
+		
+		
+		return "login/findid";
+	}
 	
 	
 	
