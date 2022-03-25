@@ -12,7 +12,8 @@
 </head>
 <body>
 <%@ include file = "/resources/header.jsp" %>
-<div class="jumbotron">
+<div class="jumbotron container" style="
+    text-align: center;">
         <h1 class="display-4">마이페이지</h1>
         <p class="lead">로그인후 이용해 주세요.</p>
         <div class="btn-group" role="group" aria-label="Basic example">
