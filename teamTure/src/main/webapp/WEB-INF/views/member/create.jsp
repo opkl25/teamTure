@@ -15,7 +15,7 @@
 	<div id="logindiv">
 	
 		<div class="container-fluid">
-			<a href="/controller/home1.do" class="navbar-brand">
+			<a href="/controller" class="navbar-brand">
 				<img src="/controller/img/logow.jpg" alt="로고이미지"  class="img-fluid"/>
 			</a>
 		</div>

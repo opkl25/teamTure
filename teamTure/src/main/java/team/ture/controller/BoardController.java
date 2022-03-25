@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import team.ture.service.BoardService;
 import team.ture.vo.BoardVO;
+import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 
 /**
@@ -22,6 +23,7 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
 	
 	
 	

@@ -10,22 +10,31 @@
 		SELECT lidx 
 			, lregion
 			, lcontent
-			, limage
+			
 			
 		 FROM LCT
 	
 	</select>
 	
-	<select id="detailBoard" resultType="locationVO" parameterType="int">
+	<select id="detailLocation" resultType="locationVO" parameterType="int">
     	 SELECT lidx
         	 , lregion
         	 , lcontent
-        	 , limage
+        	 , latitude
+        	 , longitude
         	 
         	 
           FROM LCT
           WHERE lidx= #{lidx}
           
     </select>
+    
+    <update id="updateLocation" parameterType="locationVO">
+    	UPDATE lct
+    	   SET lcontent = #{lcontent}
+    	       
+    	WHERE lidx = #{lidx} 
+    
+    </update>
 	
 </mapper>

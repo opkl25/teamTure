@@ -16,8 +16,8 @@
 	<div class="container">
 	
 	
-	<div id="boardtable">
-		<table class="table table-bordered table-light ">
+	<div id="boardtable" style="margin:0px;">
+		<table class="table table-bordered table-light " >
 			
 			<tbody>
 									

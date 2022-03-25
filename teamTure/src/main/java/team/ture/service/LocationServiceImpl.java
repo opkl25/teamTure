@@ -22,6 +22,8 @@ public class LocationServiceImpl implements LocationService {
 		
 		return list;
 	}
+	
+	
 
 	@Override
 	public LocationVO detail(int lidx) throws Exception {
@@ -29,7 +31,14 @@ public class LocationServiceImpl implements LocationService {
 		
 		return locationDao.detail(lidx);
 	}
-		
+	
+	
+	@Override
+	public int update(LocationVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return locationDao.update(vo);
+	}
+	
 	
 
 }

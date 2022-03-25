@@ -19,7 +19,7 @@ public class TspotDAO {
 	
 	public List<TspotVO> list(SarchVO vo) throws Exception {
 				
-		return sqlSession.selectList(Namespace+".listtspot", vo);
+		return sqlSession.selectList(Namespace+".listTspot", vo);
 	}
 	
 	

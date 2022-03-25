@@ -7,12 +7,13 @@
 
 
 
+
 	
 
   
 	  <header class="py-3 mb-4 bor	der-bottom">
 	    <div class="container d-flex flex-wrap justify-content-center">
-	      <a href="/controller/home1.do" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+	      <a href="/controller" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
 	        <svg class="bi me-2" width="40" height="32"></svg>
 	        <span class="fs-4">  	
       				<img src="/controller/img/logow.jpg" alt="로고" id="logo" class="d-inline-block align-text-top">
@@ -36,35 +37,35 @@
 		          
 				
 	      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            
+		    
 				            <li><hr class="dropdown-divider">-ㄱ-</li>
-				            <li><a class="dropdown-item" href="/controller/location/view.do">고창군</a></li>
-				            <li><a class="dropdown-item" href="#">군산시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=1">고창군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=2">군산시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=3">김제시</a></li>
 				            
 				            <li><hr class="dropdown-divider">-ㄴ-</li>
-				            <li><a class="dropdown-item" href="#">남원시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=4">남원시</a></li>
 				            
 				            <li><hr class="dropdown-divider">-ㅁ-</li>
-				            <li><a class="dropdown-item" href="#">무주군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=5">무주군</a></li>
 				            
 				            <li><hr class="dropdown-divider">-ㅂ-</li>
-				            <li><a class="dropdown-item" href="#">부안군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=6">부안군</a></li>
 				    
 				            <li><hr class="dropdown-divider">-ㅅ-</li>
-				            <li><a class="dropdown-item" href="#">순창군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=7">순창군</a></li>
 				            
 				            <li><hr class="dropdown-divider">-ㅇ-</li>
-				            <li><a class="dropdown-item" href="#">완주군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=8">완주군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=9">익산시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=10">임실군</a></li>
 				            
 				            <li><hr class="dropdown-divider">-ㅈ-</li>
-				            <li><a class="dropdown-item" href="#">장수군</a></li>
-				            <li><a class="dropdown-item" href="#">전주시</a></li>
-				            <li><a class="dropdown-item" href="#">정읍시</a></li>
-				            <li><a class="dropdown-item" href="#">진안군</a></li>
-				            
-				            <li><hr class="dropdown-divider">기타</li>
-				            <li><a class="dropdown-item" href="#">타지역</a></li>
-				    
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=11">장수군</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=12">전주시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=13">정읍시</a></li>
+				            <li><a class="dropdown-item" href="/controller/location/view.do?lidx=14">진안군</a></li>
+				            				            
 		          </ul>
 		          </li>
 		        
@@ -78,7 +79,7 @@
 		          <a class="nav-link" href="#" >QnA</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link disabled">마이페이지</a>
+		          <a class="nav-link">마이페이지</a>
 		        </li>
 		        
 		        <li class="nav-item">
@@ -93,7 +94,7 @@
 				
 				<div class="collapse navbar-collapse flex-wrap justify-content-end" id="navbarSupportedContent">
 		      	
-    				<a class="navbar-brand" href="/controller/home1.do">
+    				<a class="navbar-brand" href="/controller">
       					<img src="/controller/img/home.jpg" alt="" width="30" height="24">
 				    </a>
 				    <a class="navbar-brand" href="/controller/login.do">

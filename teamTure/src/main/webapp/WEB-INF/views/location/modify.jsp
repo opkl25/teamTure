@@ -20,6 +20,8 @@
 	
 	</div>
 	<div id="boardtable" class="col">
+	<form name="frm" action = "modify.do" method="post">
+		<input type="hidden" name="lidx" value="${vo.lidx}">
 		<table class="table table-bordered table-light table-responsive ">
 			
 			<tbody>
@@ -31,79 +33,22 @@
 					
 					<tr>
 						<th>내용</th>
-						<td colspan="3"><p style="width:100%; height:26vh">${vo.lcontent}</p> </td>
+						<td colspan="3"><input name="lcontent" style="width:100%; height:26vh" type="text" value="${vo.lcontent}"> </td>
 					</tr>
 					
 			</tbody>
-		</table>
-		
+			</table>
+		</form>
 		</div>
+		
 		<div id="listbutton" class="container d-flex flex-wrap">
 			
-				<button class="btn btn-outline-info me-auto" onclick="location.href='/controller'">홈으로</button>
+				<button class="btn btn-outline-info me-auto" onclick="location.href='view.do?lidx=${vo.lidx}'">뒤로가기</button>
 			
-				<button class="btn btn-outline-info" onclick="location.href='modify.do?lidx=${vo.lidx}'">수정</button>
-				
-				
+				<button class="btn btn-outline-info" onclick="save()">저장</button>
+								
 		</div>
 		
-		<div class="container ">
-			<div class="row row-cols-1 row-cols-md-4 ">
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
-		    
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
-		    
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
-		    
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
-		    
-		   </div>
-		
-		</div>
 		
 		
 		<div class="container " style ="border :1px solid lightgray;">
@@ -124,15 +69,13 @@
 					for="rate5">★</label>
 				
 				
-				<div class="d-flex flex-wrap container justify-content-end mb-2">
-				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
-				
 				
 			</fieldset>
 			<div class="d-flex flex-wrap container justify-content-end mb-2">
 				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
 			</div>
-			</div>				
+			</div>
+				
 			
 			<div>
 				<textarea class="col-auto form-control" type="text" id="reviewContents"
@@ -167,6 +110,10 @@
 
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
+	function save(){
+		document.frm.submit();
+	}
+	
 	
 	
 	

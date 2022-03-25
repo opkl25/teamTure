@@ -5,7 +5,7 @@
  
 <mapper namespace="team.ture.mapper.locationMapper">
 	
-	<select id="listtspot" resultType="tspotVO">
+	<select id="listTspot" resultType="tspotVO">
 	
 		SELECT tidx 
 			, tsubject

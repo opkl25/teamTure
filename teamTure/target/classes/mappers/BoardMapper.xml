@@ -23,7 +23,7 @@
           and bwriter like '%'||#{sarchValue}||'%'
           </if>
           
-          order by bidx asc
+          order by bidx desc
           
     </select>
     

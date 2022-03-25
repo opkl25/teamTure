@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.ture.vo.BoardVO;
 import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 
@@ -22,11 +23,15 @@ public class LocationDAO {
 		return sqlSession.selectList(Namespace+".listLocation", vo);
 	}
 	
+	
+	
 	public LocationVO detail(int lidx) throws Exception{
-		return sqlSession.selectOne(Namespace+"detailLocation", lidx);
+		return sqlSession.selectOne(Namespace+".detailLocation", lidx);
 	}
 	
-	
+	public int update(LocationVO vo) throws Exception{
+		return sqlSession.update(Namespace+".updateLocation",vo);
+	}
 	
 	
 }

@@ -4,7 +4,10 @@ public class LocationVO {
 		private int lidx;
 		private String lregion;
 		private String lcontent;
-		private String limage;
+		private double latitude;
+		private double longitude;
+		
+		
 		
 		
 		public int getLidx() {
@@ -25,12 +28,21 @@ public class LocationVO {
 		public void setLcontent(String lcontent) {
 			this.lcontent = lcontent;
 		}
-		public String getLimage() {
-			return limage;
+		public double getLatitude() {
+			return latitude;
 		}
-		public void setLimage(String limage) {
-			this.limage = limage;
+		public void setLatitude(double latitude) {
+			this.latitude = latitude;
 		}
+		public double getLongitude() {
+			return longitude;
+		}
+		public void setLongitude(double longitude) {
+			this.longitude = longitude;
+		}
+		
+		
+		
 		
 		
 		

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import team.ture.service.LocationService;
+import team.ture.vo.BoardVO;
 import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 
@@ -41,19 +42,41 @@ public class LocationController {
 	
 	
 	
-	  @RequestMapping(value = "/view.do", method = RequestMethod.GET) public String
-	  view(Locale locale, Model model) throws Exception {
+	  @RequestMapping(value = "/view.do", method = RequestMethod.GET) 
+	  public String view(Locale locale, Model model, int lidx) throws Exception {
 	  
-			/*
-			 * LocationVO vo = locationService.detail(lidx);
-			 * 
-			 * model.addAttribute("vo",vo);
-			 */
+			
+		LocationVO vo = locationService.detail(lidx);
+			 
+		model.addAttribute("vo",vo);
+			
 	  
 	 
 	  return "location/view"; 
 	  
 	  }
+	  
+	  @RequestMapping(value = "/modify.do", method = RequestMethod.GET) 
+	  public String modify(Locale locale, Model model, int lidx) throws Exception {
+	  
+			
+		LocationVO vo = locationService.detail(lidx);
+			 
+		model.addAttribute("vo",vo);
+			
+	  
+	 
+	  return "location/modify"; 
+	  
+	  }
+	  
+	  @RequestMapping(value = "/modify.do", method = RequestMethod.POST)
+		public String modify(Locale locale, Model model, int lidx, LocationVO vo) throws Exception {
+			
+			locationService.update(vo);
+			
+			return "redirect:view.do?lidx="+vo.getLidx();
+		}
 	  
 	  
 	/* 

@@ -40,8 +40,8 @@
                                 <div class="offset-1 col-lg-10">
                                     <button class="btn1">로그인</button><br><br>
                                     <span>아이디 찾기</span>&nbsp;&nbsp;
-                                    <span>비밀번호 찾기</span>&nbsp;&nbsp;
-                                    <span>회원가입</span>
+                                    <a><span>비밀번호 찾기</span></a>
+                                    <a href="member/create.do"><span>회원가입</span></a>
                                 </div>
                             </div>
                         </form>

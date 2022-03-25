@@ -17,8 +17,7 @@
 	
 	
 	<form name="frm" action ="register.do" method="post">
-		<%-- <input type="hidden" name="bidx" value="${vo.bidx}"> --%>
-	<div>
+	<div class="form-group row">
 		<table class="table table-bordered table-light ">
 			
 			<tbody>
@@ -32,6 +31,19 @@
 				<td colspan="3"><input style="width:100%; height:70vh" type="text" name="bcontent"></td>
 			</tr>
 			
+			
+			<tr>
+				<div class=" row">
+				            <label for="inputFile" class="col-sm-2 col-form-label"><strong>첨부 파일</strong></label>
+				            <div class="col-sm-10">
+				                <div class="custom-file" id="inputFile">
+				                    <input name="file" type="file" class="custom-file-input" id="customFile">
+				                    <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
+				                </div>
+				            </div>
+				        </div>
+			
+			</tr>
 		</tbody>
 		</table>
 		
@@ -48,6 +60,11 @@
 	function save(){
 		document.frm.submit();
 	}
+	
+	$(".custom-file-input").on("change", function() {
+		  var fileName = $(this).val().split("\\").pop();
+		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		});
 	</script>
 	
 
