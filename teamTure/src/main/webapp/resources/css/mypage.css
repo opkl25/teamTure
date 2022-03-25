@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+th{
+    text-align: center;
+}
+table{
+    border: none;
+    outline: none;
+    box-shadow: 0px 1px 20px -3px rgba(0,0,0,0.5);
+    border-collapse: collapse;
+    height: 70vh;
+    font-family: 'Secular One', sans-serif;
+    border-radius: 30px;
+    width: 30vw;
+    margin-left: 25vw;
+    font-size: 14px;
+}
+#table{
+    height: 20vh;
+}
+
