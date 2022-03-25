@@ -12,18 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/css/style.css"  rel="stylesheet" />
 </head>
- <body>
+ <body class="bg-light">
  
  
  
-      <section class="login py-5 bg-light">
+     <section class="login py-5 bg-light">
             <div class="container">
                 <div class="row g-0">
                     <div class="col-lg-5">
-                        <img src="img/logo2.png" class="img-fluid">
+                        <a href="/controller"><img src="img/logo2.png" class="img-fluid"></a>
                     </div>
                     <div class="col-lg-7 text-center py-5">
-                        <h1>Welcom Back</h1>
+                        <h1>Tous</h1>
 
                         <form>
                             <div class="form-row py-3 pt-5">
@@ -36,12 +36,11 @@
                                     <input type="text" class="inp px-3" placeholder="비밀번호">
                                 </div>
                             </div>
-                            <div class="form-row py-3">
                                 <div class="offset-1 col-lg-10">
                                     <button class="btn1">로그인</button><br><br>
-                                    <span>아이디 찾기</span>&nbsp;&nbsp;
-                                    <a><span>비밀번호 찾기</span></a>
-                                    <a href="member/create.do"><span>회원가입</span></a>
+                                    <a href="/controller/login/findid.do"><span>아이디 찾기</span></a>&nbsp;&nbsp;
+                                    <a href="/controller/login/findpwd.do"><span>비밀번호 찾기</span></a>&nbsp;&nbsp;
+                                    <a href="/controller/member/create.do"><span>회원가입</span></a>&nbsp;&nbsp;
                                 </div>
                             </div>
                         </form>

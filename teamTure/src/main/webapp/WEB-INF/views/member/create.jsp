@@ -12,121 +12,122 @@
 
 	<section>
 	
-	<div id="logindiv">
-	
-		<div class="container-fluid">
-			<a href="/controller" class="navbar-brand">
-				<img src="/controller/img/logow.jpg" alt="로고이미지"  class="img-fluid"/>
-			</a>
-		</div>
-		
-		
-		<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
-		<form action = "createOk.jsp" method="post" id="frm">
-			<div class="modal-dialog" role="document">
-			    <div class="modal-content rounded-5 shadow">
-			      <div class="modal-header p-5 pb-4 border-bottom-0">
-			      <h2 class="fw-bold mb-0">회원가입</h2>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/controller/login.do'"></button>
-			      </div>
-			
-			      <div class="modal-body p-5 pt-0">
-			        
-			          <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4 dropdown " id="floatingInput" placeholder="아이디를 입력해 주세요..">
-			            <label for="floatingInput">아이디</label>
-			            
-			            <input type="button" class="btn btn-outline-success" value="중복확인" onclick="idCheck(this)">
-			          </div>
-			          <div class="form-floating mb-3">
-			            <input type="password" class="form-control rounded-4"  placeholder="비밀번호">
-			            <label for="floatingPassword">비밀번호</label>
-			           </div>
-			           
-			           <div class="form-floating mb-3">
-			            <input type="password" class="form-control rounded-4"  placeholder="비밀번호 확인">
-			            <label for="floatingPassword">비밀번호 확인</label>
-			          </div>
-			           
-			            <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4" id="floatingInput">
-			            <label for="floatingInput">닉네임</label>
-			            
-			            <input type="button" class="btn btn-outline-success" value="중복확인" onclick="idCheck(this)">
-			          </div>
-			          <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4" >
-			            <label for="floatingInput">이름</label>
-			          </div>
-			          
-			          <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4" >
-			            <label for="floatingInput">연락처</label>
-			          </div>
-				      
-				      <div class="form-floating">
-				      		<input class="rounded-4 btn btn-outline-success" type="button"  onclick="sample6_execDaumPostcode()" value="주소 찾기">
-				            <input class="form-control rounded-4" type="text" id="sample6_postcode" >
-				            <label style="top: 35px;" for="sample6_postcode">우편번호</label>
-				      </div>
-				    
-					  <div class="form-floating">
-							<input class="form-control rounded-4" type="text" id="sample6_address">
-							<label for="floatingInput">주소</label>
-					  </div>
-					
-					  <div class="form-floating">		
-							<input class="form-control rounded-4" type="text" id="sample6_detailAddress" >
-							<label for="floatingInput">상세주소</label>
-					  </div>
-					  
-					  <div class="form-floating mb-3">	
-							<input class="form-control rounded-4" type="text" id="sample6_extraAddress" >
-							<label for="floatingInput">참고항목</label>
-			          </div>
-			          
-			          <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
-			            <label for="floatingInput">생년월일</label>
-			          </div>
-			          
-			          <div class="form-floating mb-3">
-			            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
-			            <label for="floatingInput">이메일</label>
-			          </div>
-			          
-			          
-			          <div class="form-floating mb-3">
-			          	<label style="top: -15px;">성별</label>
-			          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-			              
-						  <input type="radio" class="btn-check me-auto" name="gender" id="btnradio1" autocomplete="off" value="M" checked="">
-						  <label class="btn btn-outline-success" for="btnradio1">남자</label>
-						  <input type="radio" class="btn-check" name="gender" id="btnradio2" autocomplete="off" value="W" checked="">
-						  <label class="btn btn-outline-success" for="btnradio2">여자</label>
-					  
-					</div>
-					</div>
-				
-		
-					<div class="d-grid gap-2 col-6 mx-auto">
-	  		
-	  			<button class="btn btn-primary" type="submit">회원가입</button>
-	  		
-				</div>
-			
-			</div>
-			</div>
-			</div>
-		
-		</form>
-		
-		
-		</div>
-	
-	</div>
-			
-	</section>
+        <div id="logindiv">
+        
+            <div class="container-fluid">
+                <a href="/controller" class="navbar-brand">
+                    <img src="/controller/img/logow.jpg" alt="로고이미지"  class="img-fluid"/>
+                </a>
+            </div>
+            
+            
+            <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/controller/login.do'"></button>
+                <form action = "createOk.jsp" method="post" id="frm">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content rounded-5 shadow">
+                      <div class="modal-header p-5 pb-4 border-bottom-0">
+                      <h2 class="fw-bold mb-0">회원가입</h2>
+                        
+                      </div>
+                
+                      <div class="modal-body p-5 pt-0">
+                        
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4 dropdown " id="floatingInput" placeholder="아이디를 입력해 주세요..">
+                            <label for="floatingInput">아이디</label>
+                            
+                            <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
+                          </div>
+                          <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-4"  placeholder="비밀번호">
+                            <label for="floatingPassword">비밀번호</label>
+                           </div>
+                           
+                           <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-4"  placeholder="비밀번호 확인">
+                            <label for="floatingPassword">비밀번호 확인</label>
+                          </div>
+                           
+                            <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4" id="floatingInput">
+                            <label for="floatingInput">닉네임</label>
+                            
+                            <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
+                          </div>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4" >
+                            <label for="floatingInput">이름</label>
+                          </div>
+                          
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4" >
+                            <label for="floatingInput">연락처</label>
+                          </div>
+                          
+                          <div class="form-floating">
+                                  <input class="rounded-4 btn btn-success" type="button"  onclick="sample6_execDaumPostcode()" value="주소 찾기">
+                                <input class="form-control rounded-4" type="text" id="sample6_postcode" >
+                                <label style="top: 35px;" for="sample6_postcode">우편번호</label>
+                          </div>
+                        
+                          <div class="form-floating">
+                                <input class="form-control rounded-4" type="text" id="sample6_address">
+                                <label for="floatingInput">주소</label>
+                          </div>
+                        
+                          <div class="form-floating">		
+                                <input class="form-control rounded-4" type="text" id="sample6_detailAddress" >
+                                <label for="floatingInput">상세주소</label>
+                          </div>
+                          
+                          <div class="form-floating mb-3">	
+                                <input class="form-control rounded-4" type="text" id="sample6_extraAddress" >
+                                <label for="floatingInput">참고항목</label>
+                          </div>
+                          
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
+                            <label for="floatingInput">생년월일</label>
+                          </div>
+                          
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
+                            <label for="floatingInput">이메일</label>
+                          </div>
+                          
+                          
+                          <div class="form-floating mb-3">
+                              <label style="top: -15px;">성별</label>
+                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                              
+                              <input type="radio" class="btn-check me-auto" name="gender" id="btnradio1" autocomplete="off" value="M" checked="">
+                              <label class="btn btn-outline-success" for="btnradio1">남자</label>
+                              <input type="radio" class="btn-check" name="gender" id="btnradio2" autocomplete="off" value="W" checked="">
+                              <label class="btn btn-outline-success" for="btnradio2">여자</label>
+                          
+                        </div>
+                        </div>
+                    
+            
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                  
+                      <button class="btn btn-primary" type="submit">회원가입</button>
+                  
+                    </div>
+                
+                </div>
+                </div>
+                </div>
+            
+            </form>
+            
+            
+            </div>
+        
+        </div>
+                
+        </section>
 	
 	<%@ include file = "/resources/footer.jsp" %>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
