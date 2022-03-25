@@ -26,12 +26,11 @@
 					
 					<tr>
 						
-						<th colspan="2" style="text-align:center; text-size-adjust: auto;">${vo.lregion} </th>
+						<th  style="text-align:center;">${vo.lregion} </th>
 					</tr>
 					
 					<tr>
-						<th>내용</th>
-						<td colspan="3"><p style="width:100%; height:26vh">${vo.lcontent}</p> </td>
+						<td >${vo.lcontent}</td>
 					</tr>
 					
 			</tbody>
@@ -122,23 +121,20 @@
 					for="rate4">★</label>
 				<input type="radio" name="reviewStar" value="1" id="rate5"><label
 					for="rate5">★</label>
-				
-				
-				<div class="d-flex flex-wrap container justify-content-end mb-2">
-				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
-				
-				
+												
 			</fieldset>
-			<div class="d-flex flex-wrap container justify-content-end mb-2">
-				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
-			</div>
+			
 			</div>				
 			
 			<div>
 				<textarea class="col-auto form-control" type="text" id="reviewContents"
 						  placeholder="리뷰 댓글"></textarea>
 			</div>
-		</form>					
+		</form>		
+		<div class="d-flex flex-wrap container justify-content-end mb-2">
+				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
+				
+				</div>			
 		
 		<div id="boardtable" class="col table-responsive">
 		<table class="table table-bordered table-light align-middle ">
