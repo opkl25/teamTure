@@ -7,6 +7,6 @@
     
     <aside>
     	<button id="top" style="position: fixed; bottom: 5px;right:5px;" onclick = "location.href = '#' ">
-	    Top
+	    &#8679
 	    </button> 
     </aside>
