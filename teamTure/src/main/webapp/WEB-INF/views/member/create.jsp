@@ -7,6 +7,17 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
+<script>
+        function joinform_check(){
+            var id = document.getElementById("floatingInput");
+            if(id.value == ""){
+                alert("아이디를 입력해주세요.");
+                id.focus();
+                return false;
+            }
+            document.joinform_submit();
+        }
+    </script>
 </head>
 <body>
 
@@ -23,7 +34,7 @@
             
             <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/controller/login.do'"></button>
-                <form action = "createOk.jsp" method="post" id="frm">
+                <form action = "createOk.jsp" method="post" id="frm"  name="join_form">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content rounded-5 shadow">
                       <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -34,7 +45,7 @@
                       <div class="modal-body p-5 pt-0">
                         
                           <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4 dropdown " id="floatingInput" placeholder="아이디를 입력해 주세요..">
+                            <input type="text" class="form-control rounded-4 dropdown" name="id" id="floatingInput" placeholder="아이디를 입력해 주세요..">
                             <label for="floatingInput">아이디</label>
                             
                             <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
