@@ -8,10 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import team.ture.service.BoardService;
 import team.ture.vo.BoardVO;
-import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 
 /**
@@ -33,7 +34,7 @@ public class BoardController {
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String list(Locale locale, Model model,SarchVO vo) throws Exception {
 		
-		//∞‘Ω√±€ ∞°¡Æø¿¥¬
+
 		List<BoardVO> list = boardService.list(vo);
 		
 		model.addAttribute("list",list); 
@@ -90,12 +91,35 @@ public class BoardController {
 		return "board/register";
 	}
 	
-	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
-	public String register(Locale locale, Model model, BoardVO vo) throws Exception {
+	
+	
+	@RequestMapping(value="/register.do", method= {RequestMethod.POST})
+	public String register(MultipartHttpServletRequest req, MultipartFile file, BoardVO vo) throws Exception {
+			
+			
+			
+			
+			boardService.insert(vo);
+			
+			return "redirect:view.do?bidx="+vo.getBidx();
+	}
+	
+	
+	/*ÌÖåÏä§Ìä∏*/
+	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
+	public String test(Locale locale, Model model) throws Exception {
 		
-		boardService.insert(vo);
 		
-		return "redirect:view.do?bidx="+vo.getBidx();
+		
+		return "board/test";
+	}
+	
+	// Í≤åÏãúÌåê Í∏Ä ÏûëÏÑ±
+	@RequestMapping(value = "/request.do", method = RequestMethod.POST)
+	public String request(BoardVO boardVO, MultipartHttpServletRequest mpRequest) throws Exception{
+		
+		
+		return "board/list";
 	}
 	
 		

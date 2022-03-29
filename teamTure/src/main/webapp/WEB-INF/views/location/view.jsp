@@ -20,17 +20,17 @@
 	
 	</div>
 	<div id="boardtable" class="col">
-		<table class="table table-bordered table-light table-responsive ">
+		<table class="table table-bordered table-light table-responsive" id="viewTable" >
 			
 			<tbody>
 					
 					<tr>
 						
-						<th  style="text-align:center;">${vo.lregion} </th>
+						<th  id="viewTh">${vo.lregion} </th>
 					</tr>
 					
 					<tr>
-						<td >${vo.lcontent}</td>
+						<td  id="viewTd">${vo.lcontent}</td>
 					</tr>
 					
 			</tbody>
@@ -47,23 +47,10 @@
 		</div>
 		
 		<div class="container ">
-			<div class="row row-cols-1 row-cols-md-4 ">
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
+			<div class="row row-cols-1 row-cols-md-4 justify-content-center">
 		    
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
+				<div class="card  col" >
+				  	<a href="/controller/tspot/view.do?tidx=1">
 				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
 				  	</a>
 				  <div class="card-body">
@@ -72,23 +59,9 @@
 				    
 				  </div>
 				</div>
-		    </div>
 		    
-		    <div class="col">
-				  <div class="card h-100" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    </div>
 		    
-		    <div class="col">
-				  <div class="card h-100" >
+		    	<div class="card col" >
 				  	<a href="#">
 				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
 				  	</a>
@@ -98,7 +71,28 @@
 				    
 				  </div>
 				</div>
-		    </div>
+		    
+		    <div class="card col" >
+				  	<a href="#">
+				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
+				  	</a>
+				  <div class="card-body">
+				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
+				    <p class="card-text">소개글입니다.</p>
+				    
+				  </div>
+				</div>
+		    
+		    <div class="card col" >
+				  	<a href="#">
+				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
+				  	</a>
+				  <div class="card-body">
+				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
+				    <p class="card-text">소개글입니다.</p>
+				    
+				  </div>
+				</div>
 		    
 		   </div>
 		
@@ -160,7 +154,7 @@
 		</div>
 		
 	</div>
-
+	</div>
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
 	

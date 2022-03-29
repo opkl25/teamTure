@@ -19,4 +19,19 @@
 	
 	</select>
 	
+	<select id="detailTspot" resultType="tspotVO" parameterType="int">
+		SELECT Tidx
+			, tsubject
+			, tcontent
+			, timg
+			, region
+			, tag
+			, delny
+			
+		FROM TSPOT
+		WHERE tidx=#{tidx}
+	
+	
+	</select>
+	
 </mapper>

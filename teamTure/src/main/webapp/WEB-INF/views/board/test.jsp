@@ -17,7 +17,7 @@
 	<div class="container">
 	
 	
-	<form name="frm" action ="register.do" method="post" enctype="multipart/form-data">
+	<form name="frm" action ="request.do" method="post" enctype="multipart/form-data">
 	<div class="form-group row">
 		<table class="table table-bordered table-light ">
 			

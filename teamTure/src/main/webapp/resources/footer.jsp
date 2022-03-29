@@ -17,7 +17,7 @@
 		    
 		    <div class="  ">
 		    	<button onclick="location.href='/controller/board/list.do'">리스트</button>
-		    	<button onclick="location.href='/controller/test/view.jsp'">테스트</button>
+		    	<button onclick="location.href='/controller/board/test.do'">테스트</button>
 		    </div>
 	 
 		  </footer>

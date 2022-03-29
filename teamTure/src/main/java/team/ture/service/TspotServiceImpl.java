@@ -24,6 +24,14 @@ public class TspotServiceImpl implements TspotService {
 	}
 
 	
+	@Override
+	public TspotVO detail(int tidx) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return tspotDao.detail(tidx);
+	}
+	
+	
 	
 
 }

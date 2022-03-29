@@ -45,6 +45,20 @@ public class TspotController {
 		return "tspot/list";
 	}
 	
+	@RequestMapping(value = "/view.do", method = RequestMethod.GET) 
+	  public String detail(Locale locale, Model model, int tidx) throws Exception {
+	  
+			
+		TspotVO vo = tspotService.detail(tidx);
+			 
+		model.addAttribute("vo",vo);
+			
+	  
+	 
+	  return "tspot/view"; 
+	  
+	  }
+	
 	
 	
 	/*

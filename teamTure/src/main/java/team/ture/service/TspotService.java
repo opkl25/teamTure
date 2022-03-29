@@ -8,6 +8,6 @@ import team.ture.vo.TspotVO;
 public interface TspotService {
 
 	List<TspotVO> list(SarchVO vo) throws Exception;
-	
+	TspotVO detail(int tidx) throws Exception;
 	
 }

@@ -6,20 +6,25 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 import team.ture.vo.TspotVO;
 
 @Repository
 public class TspotDAO {
 	
-	@Autowired  //Å¸ÀÔÀ¸·Î ÀÇÁ¸ ÁÖÀÔ
+	@Autowired  //Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private SqlSession sqlSession;
 	
-	private static final String Namespace = "team.ture.mapper.locationMapper" ;//»ó¼ö°ª ¼³Á¤
+	private static final String Namespace = "team.ture.mapper.locationMapper" ;//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 	public List<TspotVO> list(SarchVO vo) throws Exception {
 				
 		return sqlSession.selectList(Namespace+".listTspot", vo);
+	}
+
+	public TspotVO detail(int tidx) throws Exception{
+		return sqlSession.selectOne(Namespace+".detailTspot", tidx);
 	}
 	
 	
