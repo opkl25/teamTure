@@ -18,14 +18,37 @@
   </head>
 <body>
 <%@ include file = "/resources/header.jsp" %>
+   <div class="container px-4">
+   <div class="row gx-5">
+   <div class="container-sm prowrap">
+    <div class="navi" role="banner">
+        <div class="gnb_area">
+          <a href="/controller"><img src="/controller/img/logo2.png" class="img-fluid"></a>
+          <p class="tous">Tous</p>
+        </div>
+        <div class="profile_inner">
+          <div class="proimg"></div>
+          <div class="proinfo">
+            <p><strong>닉네임 영역</strong></p>
+            <p><small>&nbsp;아이디 영역</small></p>
+          </div>
+        </div>
+    </div>
     <div class="container">
+   
       
-                <div class="col-md-7 col-lg-5">
-                  <div class="row g-3">
+                <div class="twrap">
+                  <div class=" content">
                     <table class="table table-defualt table-borderless table align-middle">
+                      <thead>
+                        <tr>
+                          <th class="table-success">내프로필</th>
+                          <th class="table-success prosummary"></th>
+                        </tr>
+                      </thead>
                       <tr>
-                        <th style="width: 100px;">아이디</th>
-                        <td>내용rrr</td>
+                        <th style="width: 80px;">아이디</th>
+                        <td>내용</td>
                       </tr>
                       <tr>
                         <th>이름</th>
@@ -54,17 +77,23 @@
                     </table>
                     <table class="table table-defualt table-borderless table align-middle" id="table">
                       <tr>
-                        <th style="width: 100px;">작성글</th>
+                        <th class="table-success" style="height: 37px;">나의 활동</th>
+                        <td class="table-success prosummary"></td>
+                      </tr>
+                      <tr>
+                        <th>작성글</th>
                         <td>내용</td>
                       </tr>
                     </table>
                   </div>
               </div>
-          </div>
-      </div>
-  </div>
-
+          
+        </div> 
     </div> 
+    </div>
+     
+      </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
