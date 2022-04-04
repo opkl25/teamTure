@@ -22,58 +22,53 @@
 <body>
 
 	<section>
-	
+        
         <div id="logindiv">
         
-            <div class="container-fluid">
-                <a href="/controller" class="navbar-brand">
-                    <img src="/controller/img/logow.jpg" alt="로고이미지"  class="img-fluid"/>
-                </a>
-            </div>
+            
             
             
             <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/controller/login.do'"></button>
-                <form action = "createOk.jsp" method="post" id="frm"  name="join_form">
+                <form action = "createOk.jsp" method="post" id="frm" class="validation-form" name="frm">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content rounded-5 shadow">
                       <div class="modal-header p-5 pb-4 border-bottom-0">
                       <h2 class="fw-bold mb-0">회원가입</h2>
-                        
+                        <p>*표시는 필수 항목입니다.</p>
                       </div>
-                
+                      
                       <div class="modal-body p-5 pt-0">
                         
-                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4 dropdown" name="id" id="floatingInput" placeholder="아이디를 입력해 주세요..">
-                            <label for="floatingInput">아이디</label>
+                        <div class="form-floating mb-3 id">
+                          <input type="text" class="form-control rounded-4 id" id="floatingInput" name="id" onblur="checkFn('id')">
+                          <label for="floatingInput">*아이디<span class="check"></span></label>
+                          
+                          <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
+                        </div>
+                          <div class="form-floating mb-3 pwd">
+                            <input type="password" class="form-control rounded-4" name="pwd" onblur="checkFn('pwd')">
+                            <label for="floatingInput">*비밀번호<span class="check"></span></label>
+                          </div>
+                          <div class="form-floating mb-3 repwd">
+                            <input type="password" class="form-control rounded-4" name="repwd" onblur="checkFn('repwd')">
+                            <label for="floatingInput">*비밀번호 확인<span class="check"></span></label>
+                          </div>
+                           
+                            <div class="form-floating mb-3 nickname">
+                            <input type="text" class="form-control rounded-4 nickname" id="floatingInput" name="nickname" onblur="checkFn('nickname')">
+                            <label for="floatingInput">*닉네임<span class="check"></span></label>
                             
                             <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
                           </div>
-                          <div class="form-floating mb-3">
-                            <input type="password" class="form-control rounded-4"  placeholder="비밀번호">
-                            <label for="floatingPassword">비밀번호</label>
-                           </div>
-                           
-                           <div class="form-floating mb-3">
-                            <input type="password" class="form-control rounded-4"  placeholder="비밀번호 확인">
-                            <label for="floatingPassword">비밀번호 확인</label>
-                          </div>
-                           
-                            <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4" id="floatingInput">
-                            <label for="floatingInput">닉네임</label>
-                            
-                            <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4" >
-                            <label for="floatingInput">이름</label>
+                          <div class="form-floating mb-3 name">
+                            <input type="text" class="form-control rounded-4" name="name" onblur="checkFn('name')">
+                            <label for="floatingInput">*이름<span class="check"></span></label>
                           </div>
                           
-                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4" >
-                            <label for="floatingInput">연락처</label>
+                          <div class="form-floating mb-3 phone">
+                            <input type="text" class="form-control rounded-4" name="phone" onblur="checkFn('phone')">
+                            <label for="floatingInput">*연락처<span class="check"></span></label>
                           </div>
                           
                           <div class="form-floating">
@@ -97,14 +92,14 @@
                                 <label for="floatingInput">참고항목</label>
                           </div>
                           
-                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
-                            <label for="floatingInput">생년월일</label>
+                          <div class="form-floating mb-3 birth">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="birth" placeholder="" onblur="checkFn('birth')">
+                            <label for="floatingInput">*생년월일<span class="check"></span></label>
                           </div>
                           
-                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control rounded-4" id="floatingPassword" placeholder="비밀번호">
-                            <label for="floatingInput">이메일</label>
+                          <div class="form-floating mb-3 email">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="email" placeholder="" onblur="checkFn('email')">
+                            <label for="floatingInput">*이메일<span class="check"></span></label>
                           </div>
                           
                           
@@ -139,6 +134,145 @@
         </div>
                 
         </section>
+        <script>
+          function checkFn(type){
+            if(type == 'id'){
+                var checkId = /^[a-z]+[a-z0-9]{5,11}/g;
+                var value = document.frm.id.value;
+                var span = document.getElementsByClassName("id")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkId.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "사용가능한 아이디입니다.";
+                    span.style.color = "green";
+                    span.style.display = "inline";
+                }
+            }else if(type == 'pwd'){
+                var checkPass = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/
+                var value = document.frm.pwd.value;
+                var span = document.getElementsByClassName("pwd")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkPass.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "사용가능한 비밀번호입니다.";
+                    span.style.color = "green";
+                    span.style.display = "inline";
+                }
+            }else if(type == 'repwd'){
+                var value = document.frm.pwd.value;
+                var value2 = document.frm.repwd.value;
+                var span = document.getElementsByClassName("repwd")[0].getElementsByTagName("span")[0];
+                if(value2 == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(value != value2){
+                    span.textContent = "*비밀번호를 확인해주세요.";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "";
+                    span.style.display = "none";
+                }
+              }else if(type == 'nickname'){
+                var checkNickname = /^[a-z]+[a-z0-9]{2,7}/g;
+                var value = document.frm.nickname.value;
+                var span = document.getElementsByClassName("nickname")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkNickname.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                   span.textContent = "사용가능한 닉네임입니다.";
+                    span.style.color = "green";
+                    span.style.display = "inline";
+                }
+            }else if(type == 'name'){
+                var checkName = /^[가-힣]/g;
+                var value = document.frm.name.value;
+                var span = document.getElementsByClassName("name")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkName.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "";
+                    span.style.display = "none";
+                }
+            }else if(type == 'email'){
+                var checkEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/g;
+                var value = document.frm.email.value;
+                var span = document.getElementsByClassName("email")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkEmail.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "";
+                    span.style.display = "none";
+                }
+            }else if(type == 'phone'){
+                var checkPhone = /^[0-9]{10,15}/g;
+                var value = document.frm.phone.value;
+                var span = document.getElementsByClassName("phone")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkPhone.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "";
+                    span.style.display = "none";
+                }
+            
+            }else if(type == 'birth'){
+                var checkBirth = /^[0-9]{6}/g;
+                var value = document.frm.birth.value;
+                var span = document.getElementsByClassName("birth")[0].getElementsByTagName("span")[0];
+                if(value == ""){
+                    span.textContent = "*필수";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else if(!checkBirth.test(value)){
+                    span.textContent = "*형식오류";
+                    span.style.color = "red";
+                    span.style.display = "inline";
+                }else{
+                    span.textContent = "";
+                    span.style.display = "none";
+                }
+            
+            }
+        }
+
+        </script>
 	
 	<%@ include file = "/resources/footer.jsp" %>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -1,0 +1,22 @@
+#calendar{
+    width: 100%;
+    height: auto;
+
+}
+#fc-dom-1{
+
+    color:black
+}
+.fc-col-header-cell-cushion :link{color:black;text-decoration:none;}
+.fc-col-header-cell-cushion{text-decoration:none; color:black;}
+.fc-daygrid-day-number{text-decoration:none;color:black;}
+
+.fc-day-sun{
+	background:#FFE6E6;
+	
+	
+}
+
+.fc-day-sat{
+	background:aliceblue;
+}
