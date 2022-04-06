@@ -12,10 +12,10 @@ import team.ture.vo.SarchVO;
 @Repository
 public class BoardDAO {
 	
-	@Autowired  //타입으로 의존 주입
+	@Autowired  
 	private SqlSession sqlSession;
 	
-	private static final String Namespace = "team.ture.mapper.boardMapper" ;//상수값 설정
+	private static final String Namespace = "team.ture.mapper.boardMapper" ;
 	
 	public List<BoardVO> list(SarchVO vo) throws Exception {
 				
@@ -34,8 +34,8 @@ public class BoardDAO {
 		return sqlSession.update(Namespace+".deleteBoard",bidx);
 	}
 	
-	public int insert(BoardVO vo) throws Exception{
-		return sqlSession.insert(Namespace+".insertBoard",vo);
+	public int upload(BoardVO map) throws Exception{
+		return sqlSession.insert(Namespace+".insertBoard",map);
 	}
 	
 }

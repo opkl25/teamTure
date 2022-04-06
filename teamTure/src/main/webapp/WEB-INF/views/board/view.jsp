@@ -43,6 +43,20 @@
 						<td colspan="3"><p style="width:100%; height:70vh">${vo.bcontent}</p></td>
 					</tr>
 					
+					<tr>
+						<th><label for="inputFile" class="col-form-label"><strong>첨부 파일</strong></label></th>
+				            
+						<td colspan="3">
+						
+							<img style="width:100%;" src="<%=request.getContextPath()%>/resources/img/upload/${vo.filename}">
+							
+						
+						
+						</td>
+						
+						
+					</tr>
+					
 			</tbody>
 		</table>
 		

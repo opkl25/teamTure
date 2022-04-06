@@ -43,9 +43,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int insert(BoardVO vo) throws Exception {
+	public int upload(BoardVO map) throws Exception {
 		// TODO Auto-generated method stub
-		return boardDao.insert(vo);
+		return boardDao.upload(map);
 	}
 	
 	

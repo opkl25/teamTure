@@ -1,8 +1,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+
+	<!-- 부트스트랩 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
+	<!-- header.css -->
+	<link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
+	
+	<!-- jquery -->
+	<script src="<%=request.getContextPath()%>/resources/js/jquery-3.6.0.min.js"></script>
 
 
 
@@ -14,7 +26,6 @@
 	  <%@ include file = "/resources/aside.jsp" %>
 	    <div class="container d-flex flex-wrap justify-content-center">
 	      <a href="/controller" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-	        <svg class="bi me-2" width="40" height="32"></svg>
 	        <span class="fs-4">  	
       				<img src="/controller/img/logow.jpg" alt="로고" id="logo" class="d-inline-block align-text-top">
    			</span>

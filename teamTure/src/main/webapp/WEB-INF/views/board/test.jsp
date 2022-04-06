@@ -17,7 +17,7 @@
 	<div class="container">
 	
 	
-	<form name="frm" action ="request.do" method="post" enctype="multipart/form-data">
+	<form name="frm1" action ="#" method="get" enctype="multipart/form-data">
 	<div class="form-group row">
 		<table class="table table-bordered table-light ">
 			
@@ -38,18 +38,35 @@
 				<th><label for="inputFile" class="col-form-label"><strong>첨부 파일</strong></label></th>
 				            
 				<td>
-				            <div class="col-sm-10">
-				                <div class="custom-file" id="inputFile">
-				                    <input name="file" type="file" class="custom-file-input" id="customFile">
-				                    <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
-				                </div>
-				            </div>
-				 
-			
+				
+					
+				            <div class="inputArea">
+								 <label for="gdsImg">이미지</label>
+								 <input type="file" id="gdsImg" name="file" />
+								 <div class="select_img"><img src=""  style="margin:20px 0;"/></div>
+								 
+								 <script>
+								  $("#gdsImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img img").attr("src", data.target.result).width(500);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+								 </script>
+								 
+							</div>
+							
+				 	
+					
 				</td>
 				
 
 			</tr>
+			
+			
 			
 			
 					
@@ -60,6 +77,28 @@
 		
 	</div> 
 	</form>
+	
+	<form name="frm2" action="upload.do" method="post" enctype="multipart/form-data">
+				            <div class="inputArea">
+								 <label for="sendimg">업로드</label>
+								 <input type="file" id="sendimg" name="uploadFile" />
+								 <div class="select_img1"><img  src=""  style="margin:20px 0;"/></div>
+								 <input type="submit" onclick="upload()" value="업로드">
+								 <script>
+								  $("#sendimg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img1 img").attr("src", data.target.result).width(500);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+								 </script>
+								 
+							</div>
+							
+				 	</form>
 		<div class="container d-flex flex-wrap justify-content-end">
 			<button class="btn btn-outline-info" onclick="location.href='list.do'">취소</button>
 			<button class="btn btn-outline-info" onclick="save()">저장</button>
@@ -69,7 +108,10 @@
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
 	function save(){
-		document.frm.submit();
+		document.frm1().submit();
+	}
+	function upload(){
+		document.frm2().submit();
 	}
 	
 	

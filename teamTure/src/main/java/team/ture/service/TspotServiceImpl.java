@@ -31,7 +31,11 @@ public class TspotServiceImpl implements TspotService {
 		return tspotDao.detail(tidx);
 	}
 	
-	
+	@Override
+	public int insert(TspotVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return tspotDao.insert(vo);
+	}
 	
 
 }

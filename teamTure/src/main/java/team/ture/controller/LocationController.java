@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import team.ture.service.BoardService;
 import team.ture.service.LocationService;
 import team.ture.vo.BoardVO;
 import team.ture.vo.LocationVO;
@@ -23,6 +24,7 @@ public class LocationController {
 	
 	@Autowired
 	private LocationService locationService;
+	
 	
 	
 	
@@ -47,6 +49,7 @@ public class LocationController {
 	  
 			
 		LocationVO vo = locationService.detail(lidx);
+		
 			 
 		model.addAttribute("vo",vo);
 			

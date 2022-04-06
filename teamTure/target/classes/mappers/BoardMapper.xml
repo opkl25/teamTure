@@ -33,6 +33,7 @@
         	 , bcontent
         	 , bwriter
         	 , bwdate
+        	 , filename
         	 
           FROM board
           WHERE bidx= #{bidx}
@@ -43,6 +44,7 @@
     	UPDATE board
     	   SET bsubject = #{bsubject}
     	       ,bcontent = #{bcontent}
+    	       ,filename = #{filename}
     	WHERE bidx = #{bidx} 
     
     </update>
@@ -55,6 +57,7 @@
     </update>
     
     <insert id="insertBoard" parameterType="boardVO">
+    
 		<![CDATA[
 		INSERT INTO 
 					board(
@@ -64,16 +67,21 @@
 					,bwriter
 					,bwdate
 					,midx
+					
+					,filename
 					)
 			VALUES(
 					BIDX_SEQ.nextval
-					,#{bsubject}
-					,#{bcontent}
-					,'테스터' 
-					,SYSDATE
-					,1)
+					, #{bsubject}
+					, #{bcontent}
+					,	'테스터' 
+					,	SYSDATE
+					,	1
+					, #{filename}
+					)
 		    	
-    ]]>
+    	]]>
+    
     
     <selectKey resultType="integer" keyProperty="bidx" order="AFTER"> <!--order = AFTER BEFORE-->
     	SELECT MAX(bidx) FROM board
@@ -81,6 +89,8 @@
         
     </insert>
     
+    
+  
     
     
    

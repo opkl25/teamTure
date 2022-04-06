@@ -16,6 +16,20 @@
 			, delny
 			
 		 FROM TSPOT
+		 
+		 where delny != 'Y'
+		  <if test="sarchType != null and sarchType.equals('tsubject')">
+          and tsubject like '%'||#{sarchValue}||'%' 
+          
+          </if>
+          
+          <if test="sarchType != null and sarchType.equals('tag')">
+          
+          and tag like '%'||#{sarchValue}||'%'
+          
+          </if>
+          
+		 order by tidx desc
 	
 	</select>
 	
@@ -33,5 +47,47 @@
 	
 	
 	</select>
+	
+	<update id="updateTspot" parameterType="boardVO">
+    	UPDATE tspot
+    	   SET tsubject = #{tsubject}
+    	       ,tcontent = #{tcontent}
+    	       ,timg = #{timg}
+    	       ,tag = #{tag}
+    	       
+    	WHERE tidx = #{tidx} 
+    
+    </update>
+	
+	<insert id="insertTspot" parameterType="tspotVO">
+		<![CDATA[
+		INSERT INTO 
+					tspot(
+					
+					 tidx
+					,tsubject
+					,tcontent
+					,timg
+					,tag
+					
+					)
+					
+			VALUES(
+					 TIDX_SEQ.NEXTVAL
+					 , #{tsubject}
+					 , #{tcontent}
+					 , #{timg}
+					 , #{tag}
+					 
+		]]>	 
+				
+					
+		
+	<selectKey resultType="integer" keyProperty="tidx" order="AFTER"><!--order = AFTER BEFORE-->
+		SELECT MAX(tidx) FROM tspot
+	</selectKey>
+		
+	
+	</insert>
 	
 </mapper>

@@ -11,6 +11,6 @@ public interface BoardService {
 	BoardVO detail(int bidx) throws Exception;
 	int update(BoardVO vo) throws Exception;
 	int delete(int bidx) throws Exception;
-	int insert(BoardVO vo) throws Exception;
+	int upload(BoardVO map) throws Exception;
 	
 }

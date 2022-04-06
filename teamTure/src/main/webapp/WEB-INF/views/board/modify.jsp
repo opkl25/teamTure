@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
+
 </head>
 <body>
 	
@@ -16,7 +15,7 @@
 	<div class="container">
 	
 	
-	<form name="frm" action = "modify.do" method="post">
+	<form name="frm" action = "modify.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="bidx" value="${vo.bidx}">
 	<div class="form-group row">
 		<table class="table table-bordered table-light ">
@@ -44,18 +43,46 @@
 					</tr>
 					
 					
-					<tr>
-						<div class="form-group row">
-				            <label for="inputFile" class="col-sm-2 col-form-label"><strong>첨부 파일</strong></label>
-				            <div class="col-sm-10">
-				                <div class="custom-file" id="inputFile">
-				                    <input name="file" type="file" class="custom-file-input" id="customFile">
-				                    <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
-				                </div>
-				            </div>
-				        </div>
-						
-					</tr>
+			<tr>
+				
+				
+				<th><label for="inputFile" class="col-form-label"><strong>첨부 파일</strong></label></th>
+				            
+				<td colspan="3">
+					
+				            <div class="inputArea">
+								 <label for="gdsImg">이미지</label>
+								 <input type="file" id="gdsImg" name="uploadFile" />
+								 <input type="hidden" name="filename" value="${vo.filename}">
+								 <div>현재 이미지 : ${vo.filename}</div>
+								 <div class="select_img"><img style="width:100%;" src="<%=request.getContextPath()%>/resources/img/upload/${vo.filename}"/></div>
+								 
+								 <script>
+							
+								 
+								  $("#gdsImg").change(function(){
+									
+								
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img img").attr("src", data.target.result).width('100%');        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								
+								  });
+								 </script>
+								 
+							</div>
+							
+				 
+					
+				</td>
+				
+				
+
+			</tr>
 			
 			</tbody>
 		</table>
@@ -76,10 +103,7 @@ function save(){
 }
 
 
-$(".custom-file-input").on("change", function() {
-	  var fileName = $(this).val().split("\\").pop();
-	  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	});
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

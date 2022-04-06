@@ -22,13 +22,20 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		
 	</beans:bean>
 	
 	<context:component-scan base-package="team.ture.controller" />
 	<context:component-scan base-package="team.ture.service" />
 	<context:component-scan base-package="team.ture.dao" />
+	<context:component-scan base-package="team.ture.util" />
+	
+	<!--  spring-upload -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 	
 	
+	
+
 
 
 	

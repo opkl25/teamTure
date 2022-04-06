@@ -21,19 +21,16 @@
    <div class="container px-4">
    <div class="row gx-5">
    <div class="container-sm prowrap">
-    <div class="navi" role="banner">
-        <div class="gnb_area">
-          <a href="/controller"><img src="/controller/img/logo2.png" class="img-fluid"></a>
-          <p class="tous">Tous</p>
-        </div>
-        <div class="profile_inner">
-          <div class="proimg"></div>
-          <div class="proinfo">
-            <p><strong>닉네임 영역</strong></p>
-            <p><small>&nbsp;아이디 영역</small></p>
-          </div>
-        </div>
-    </div>
+		    <div class="navi" role="banner">
+		        
+		        <div class="profile_inner">
+		          <div class="proimg"><img src="/controller/img/logo2.png"/></div>
+		          <div class="proinfo">
+		            <p><strong>닉네임 영역</strong></p>
+		            <p><small>&nbsp;아이디 영역</small></p>
+		          </div>
+		        </div>
+		    </div>
     <div class="container">
    
       

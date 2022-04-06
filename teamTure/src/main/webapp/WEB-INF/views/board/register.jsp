@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
-<script src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	
@@ -17,7 +14,7 @@
 	<div class="container">
 	
 	
-	<form name="frm" action ="register.do" method="post" enctype="multipart/form-data">
+	<form name="frm" action ="upload.do" method="post" enctype="multipart/form-data">
 	<div class="form-group row">
 		<table class="table table-bordered table-light ">
 			
@@ -38,14 +35,28 @@
 				<th><label for="inputFile" class="col-form-label"><strong>첨부 파일</strong></label></th>
 				            
 				<td>
-				            <div class="col-sm-10">
-				                <div class="custom-file" id="inputFile">
-				                    <input name="file" type="file" class="custom-file-input" id="customFile">
-				                    <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
-				                </div>
-				            </div>
+					
+				            <div class="inputArea">
+								 <label for="gdsImg">이미지</label>
+								 <input type="file" id="gdsImg" name="uploadFile" />
+								 <div class="select_img"><img src=""  style="margin:20px 0;"/></div>
+								 
+								 <script>
+								  $("#gdsImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img img").attr("src", data.target.result).width(500);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+								 </script>
+								 
+							</div>
+							
 				 
-			
+					
 				</td>
 				
 

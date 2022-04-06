@@ -1,6 +1,5 @@
 package team.ture.vo;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 
@@ -10,8 +9,6 @@ public class BoardVO {
 	private String bwriter;
 	private String bwdate;
 	private String filename;
-	private MultipartFile newfile;
-	
 	
 	
 	
@@ -21,12 +18,6 @@ public class BoardVO {
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
-	}
-	public MultipartFile getNewfile() {
-		return newfile;
-	}
-	public void setNewfile(MultipartFile newfile) {
-		this.newfile = newfile;
 	}
 	public int getBidx() {
 		return bidx;

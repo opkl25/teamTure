@@ -10,5 +10,10 @@
         <typeAlias type="team.ture.vo.TspotVO" alias="tspotVO"/>
         <typeAlias type="team.ture.vo.SarchVO" alias="sarchVO"/>
     </typeAliases>
+    
+	    
 
 </configuration>
+
+
+
