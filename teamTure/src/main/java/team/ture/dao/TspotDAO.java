@@ -6,15 +6,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.ture.vo.BoardVO;
-import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
 import team.ture.vo.TspotVO;
 
 @Repository
 public class TspotDAO {
 	
-	@Autowired  //Ÿ������ ���� ����
+	@Autowired  
 	private SqlSession sqlSession;
 	
 	private static final String Namespace = "team.ture.mapper.locationMapper" ;//����� ����
@@ -28,8 +26,15 @@ public class TspotDAO {
 		return sqlSession.selectOne(Namespace+".detailTspot", tidx);
 	}
 
-	public int insert(TspotVO vo) throws Exception{
-		return sqlSession.insert(Namespace+".insertTspot",vo);
+	public int insert(TspotVO map) throws Exception{
+		return sqlSession.insert(Namespace+".insertTspot",map);
+	}
+	
+	public int update(TspotVO map) throws Exception{
+		return sqlSession.update(Namespace+".updateTspot",map);
+	}
+	public int delete(int tidx) throws Exception{
+		return sqlSession.update(Namespace+".deleteTspot", tidx);
 	}
 	
 	

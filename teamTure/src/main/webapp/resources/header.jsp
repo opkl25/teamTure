@@ -36,7 +36,7 @@
 	    </div>
 	    
 	    
-	  <nav class="py-2 bg-light border-bottom navbar navbar-expand-lg navbar-light bg-light ">
+	  <nav class="py-2 border-bottom navbar navbar-expand-lg navbar-light  ">
 	    <div class="container d-flex flex-wrap justify-content-center ">
 	    
 	    <ul class="navbar-nav mb-2 mb-lg-0">

@@ -8,12 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import team.ture.service.BoardService;
 import team.ture.service.LocationService;
-import team.ture.vo.BoardVO;
 import team.ture.vo.LocationVO;
 import team.ture.vo.SarchVO;
+
 
 /**
  * Handles requests for the application home page.
@@ -45,13 +43,15 @@ public class LocationController {
 	
 	
 	  @RequestMapping(value = "/view.do", method = RequestMethod.GET) 
-	  public String view(Locale locale, Model model, int lidx) throws Exception {
+	  public String view(Locale locale, Model model, int lidx ) throws Exception {
 	  
 			
 		LocationVO vo = locationService.detail(lidx);
+		/* List<TspotVO> alist = tspotService.list(vo); */
 		
 			 
 		model.addAttribute("vo",vo);
+		
 			
 	  
 	 

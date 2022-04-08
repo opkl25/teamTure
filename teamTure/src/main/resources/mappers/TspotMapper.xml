@@ -11,7 +11,9 @@
 			, tsubject
 			, tcontent
 			, timg
-			, region
+			, timg1
+			, timg2
+			, star
 			, tag
 			, delny
 			
@@ -33,14 +35,28 @@
 	
 	</select>
 	
+	<update id="deleteTspot"  parameterType="int">
+		UPDATE tspot
+		
+		 SET delny = 'Y'
+		
+		WHERE tidx = #{tidx}
+	
+	
+	
+	</update>
+	
 	<select id="detailTspot" resultType="tspotVO" parameterType="int">
 		SELECT Tidx
 			, tsubject
 			, tcontent
 			, timg
-			, region
+			, timg1
+			, timg2
+			, star
 			, tag
 			, delny
+			, lidx
 			
 		FROM TSPOT
 		WHERE tidx=#{tidx}
@@ -48,12 +64,15 @@
 	
 	</select>
 	
-	<update id="updateTspot" parameterType="boardVO">
+	<update id="updateTspot" parameterType="tspotVO">
     	UPDATE tspot
     	   SET tsubject = #{tsubject}
     	       ,tcontent = #{tcontent}
     	       ,timg = #{timg}
-    	       ,tag = #{tag}
+    	       ,timg1 = #{timg1}
+    	       ,timg2 = #{timg2}
+    	       ,lidx = #{lidx}
+    	       ,tag  = #{tag}
     	       
     	WHERE tidx = #{tidx} 
     
@@ -68,8 +87,10 @@
 					,tsubject
 					,tcontent
 					,timg
+					,timg1
+					,timg2
+					,lidx
 					,tag
-					
 					)
 					
 			VALUES(
@@ -77,8 +98,11 @@
 					 , #{tsubject}
 					 , #{tcontent}
 					 , #{timg}
+					 , #{timg1}
+					 , #{timg2}
+					 , #{lidx}
 					 , #{tag}
-					 
+					 )
 		]]>	 
 				
 					

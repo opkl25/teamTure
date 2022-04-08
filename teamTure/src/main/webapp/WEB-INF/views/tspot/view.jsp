@@ -15,50 +15,140 @@
 	<%@ include file = "/resources/header.jsp" %>
 	
 	<div class="container d-flex flex-wrap justify-content-center">
+	
 	 <div class="container bg-light">
+	  
 		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
 			  <div class="carousel-indicators">
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  
+			  <c:choose>
+			  	<c:when test="${vo.timg ne '빈 이미지 파일입니다.png' }">
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			  	</c:when>
+			  	
+			  	<c:otherwise>
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" aria-label="Slide 1"></button>
+			  	</c:otherwise>
+			  	
+			  </c:choose>
+			  
+			  <c:choose>
+			  	<c:when test="${vo.timg1 ne '빈 이미지 파일입니다.png' && vo.timg eq '빈 이미지 파일입니다.png' }">
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
+			  	</c:when>
+			  	
+			  	<c:when test="${vo.timg1 ne '빈 이미지 파일입니다.png' }">
+			  		  	<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			  	</c:when>
+			  	
+			  	
+			  	
+			  </c:choose>
+			  
+			  <c:choose>
+			  	<c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png' && vo.timg eq '빈 이미지 파일입니다.png' && vo.timg1 eq '빈 이미지 파일입니다.png'}">
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 3"></button>
+			  	</c:when>
+			  
+			  	<c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png' }">
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  	</c:when>
+			  				  
+			  </c:choose> 
+			    
+			    
 			  </div>
 			  <div class="carousel-inner">
-			    <div class="carousel-item active" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/151263622705588.gif" class="d-block w-100 viewImg" alt="..." >
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>은파 호수 공원</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
-			    <div class="carousel-item" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/151263622710923.gif" class="d-block w-100 viewImg" alt="..." >
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>새만금 방조제</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
-			    <div class="carousel-item" data-bs-interval="10000">
-			      <img src="https://www.gunsan.go.kr/upload_data/board_data/BBS_0000231/154503634401788.jpg" class="d-block w-100 viewImg" alt="..." >
-			      <div class="carousel-caption d-none d-md-block">
-			        <h5>경암동 철길 마을</h5>
-			        <p>군산</p>
-			      </div>
-			    </div>
+			  <c:choose>
+			  
+			  
+				  <c:when test="${vo.timg ne '빈 이미지 파일입니다.png' }">
+				    <div class="carousel-item active" data-bs-interval="10000">
+				      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg}" class="d-block w-100 viewImg" alt="${vo.timg}" style="height: 60vh;">
+				      <div class="carousel-caption d-none d-md-block">
+				        <h5>${vo.timg}</h5>
+				        <p>${vo.tag}</p>
+				      </div>
+				    </div>
+				   </c:when>
+				
+			   
+			   </c:choose>
+			   
+			   <c:choose>
+			  
+					  
+					  <c:when test="${vo.timg1 ne '빈 이미지 파일입니다.png' && vo.timg eq '빈 이미지 파일입니다.png' }">
+					    <div class="carousel-item active" data-bs-interval="10000">
+					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg1}" class="d-block w-100 viewImg" alt="${vo.timg1}" style="height: 60vh;">
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>${vo.timg1}</h5>
+					        <p>${vo.tag}</p>
+					      </div>
+					    </div>
+					   </c:when>
+					   
+					   <c:when test="${vo.timg1 ne '빈 이미지 파일입니다.png' }">
+						   <div class="carousel-item " data-bs-interval="10000">
+						      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg1}" class="d-block w-100 viewImg" alt="${vo.timg1}" style="height: 60vh;">
+						      <div class="carousel-caption d-none d-md-block">
+						        <h5>${vo.timg1}</h5>
+						        <p>${vo.tag}</p>
+						      </div>
+					    </div>
+					   
+					   </c:when>
+					   			   
+			   
+			   </c:choose>
+			   
+			   <c:choose>
+			  
+					  
+					 <c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png' && vo.timg1 eq '빈 이미지 파일입니다.png' && vo.timg eq '빈 이미지 파일입니다.png' }">
+					    <div class="carousel-item active" data-bs-interval="10000">
+					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg2}" class="d-block w-100 viewImg" alt="${vo.timg2}" style="height: 60vh;">
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>${vo.timg2}</h5>
+					        <p>${vo.tag}</p>
+					      </div>
+					    </div>
+					   </c:when>
+					   
+					   <c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png'}">
+					    <div class="carousel-item " data-bs-interval="10000">
+					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg2}" class="d-block w-100 viewImg" alt="${vo.timg2}" style="height: 60vh;">
+					      <div class="carousel-caption d-none d-md-block">
+					        <h5>${vo.timg2}</h5>
+					        <p>${vo.tag}</p>
+					      </div>
+					    </div>
+					   </c:when>					   
+			   
+			   
+			   </c:choose>
+			   
+			    
 			  </div>
-			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Previous</span>
-			  </button>
-			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Next</span>
-			  </button>
+			  
+			  
+					  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="visually-hidden">Previous</span>
+					  </button>
+					  
+					  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="visually-hidden">Next</span>
+					  </button>
 			</div>
+			
+	
 		</div>
 		
 	
 	
-	<div id="boardtable" class="container col" style="height:30vh;">
+	<div id="boardtable" class="container col" >
 		<table class="table table-bordered table-light table-responsive " id="viewTable">
 			
 			<tbody>
@@ -80,7 +170,12 @@
 			
 				<button class="btn btn-outline-info me-auto" onclick="location.href='/controller'">홈으로</button>
 			
-				<button class="btn btn-outline-info" onclick="location.href='modify.do?lidx=${vo.lidx}'">수정</button>
+				<button class="btn btn-outline-info" onclick="deleteO()">삭제</button>
+				<form name="frm" action="delete.do" method="post">
+					<input type="hidden" name="tidx" value="${vo.tidx }">
+				</form>
+				
+				<button class="btn btn-outline-info" onclick="location.href='modify.do?tidx=${vo.tidx}'">수정</button>
 				
 				
 		</div>
@@ -199,7 +294,17 @@
 
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
-	
+	function deleteO(){
+		if(confirm("정말 삭제하시겠습니까? ") == true){
+			document.frm.submit();
+			
+			
+		}else{
+			return ;
+		}
+		
+		
+	}
 	
 	
 	

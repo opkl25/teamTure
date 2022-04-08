@@ -9,6 +9,8 @@ public interface TspotService {
 
 	List<TspotVO> list(SarchVO vo) throws Exception;
 	TspotVO detail(int tidx) throws Exception;
-	int insert(TspotVO vo) throws Exception;
+	int insert(TspotVO map) throws Exception;
+	int update(TspotVO map) throws Exception;
+	int delete(int tidx) throws Exception;
 	
 }

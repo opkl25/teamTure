@@ -49,16 +49,19 @@
 		<div class="container ">
 			<div class="row row-cols-1 row-cols-md-4 justify-content-center">
 		    
-				<div class="card  col" >
-				  	<a href="/controller/tspot/view.do?tidx=1">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
+				<%-- <c:forEach items="${list }" var="to">
+				  <div class="col card " >
+				  	<a href="view.do?tidx=${to.tidx }">
+				  		<img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg}" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="${to.timg}" >
 				  	</a>
 				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
+				    <h5 class="card-title">${to.tsubject}</h5>
+				    <p class="card-text">${to.tcontent}</p>
 				    
 				  </div>
 				</div>
+				
+				</c:forEach> --%>
 		    
 		    
 		    	<div class="card col" >

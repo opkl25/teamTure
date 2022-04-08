@@ -32,9 +32,21 @@ public class TspotServiceImpl implements TspotService {
 	}
 	
 	@Override
-	public int insert(TspotVO vo) throws Exception {
+	public int insert(TspotVO map) throws Exception {
 		// TODO Auto-generated method stub
-		return tspotDao.insert(vo);
+		return tspotDao.insert(map);
+	}
+	
+	@Override
+	public int update(TspotVO map) throws Exception {
+		// TODO Auto-generated method stub
+		return tspotDao.update(map);
+	}
+	
+	@Override
+	public int delete(int tidx) throws Exception {
+		// TODO Auto-generated method stub
+		return tspotDao.delete(tidx);
 	}
 	
 

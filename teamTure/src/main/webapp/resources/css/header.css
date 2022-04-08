@@ -97,6 +97,13 @@ footer{
 	
 }
 
+#divInput1{
+	display:none;
+}
+#divInput2{
+	display:none;
+}
+
 
 
 /* tspot end */
@@ -110,7 +117,7 @@ footer{
 
 #add{
 	text-align:center;
-	background-color: #81ecec;
+	background-color: #dff9fb;
 	
 }
 
