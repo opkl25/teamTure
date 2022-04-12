@@ -13,7 +13,7 @@
 			, timg
 			, timg1
 			, timg2
-			, star
+			, region
 			, tag
 			, delny
 			
@@ -53,8 +53,8 @@
 			, timg
 			, timg1
 			, timg2
-			, star
 			, tag
+			, region
 			, delny
 			, lidx
 			
@@ -83,8 +83,8 @@
 		INSERT INTO 
 					tspot(
 					
-					 tidx
-					,tsubject
+					
+					 tsubject
 					,tcontent
 					,timg
 					,timg1
@@ -94,8 +94,8 @@
 					)
 					
 			VALUES(
-					 TIDX_SEQ.NEXTVAL
-					 , #{tsubject}
+					 
+					   #{tsubject}
 					 , #{tcontent}
 					 , #{timg}
 					 , #{timg1}

@@ -67,7 +67,7 @@
 				      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg}" class="d-block w-100 viewImg" alt="${vo.timg}" style="height: 60vh;">
 				      <div class="carousel-caption d-none d-md-block">
 				        <h5>${vo.timg}</h5>
-				        <p>${vo.tag}</p>
+				        <p>${vo.region}</p>
 				      </div>
 				    </div>
 				   </c:when>
@@ -83,7 +83,7 @@
 					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg1}" class="d-block w-100 viewImg" alt="${vo.timg1}" style="height: 60vh;">
 					      <div class="carousel-caption d-none d-md-block">
 					        <h5>${vo.timg1}</h5>
-					        <p>${vo.tag}</p>
+					        <p>${vo.region}</p>
 					      </div>
 					    </div>
 					   </c:when>
@@ -93,7 +93,7 @@
 						      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg1}" class="d-block w-100 viewImg" alt="${vo.timg1}" style="height: 60vh;">
 						      <div class="carousel-caption d-none d-md-block">
 						        <h5>${vo.timg1}</h5>
-						        <p>${vo.tag}</p>
+						        <p>${vo.region}</p>
 						      </div>
 					    </div>
 					   
@@ -110,7 +110,7 @@
 					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg2}" class="d-block w-100 viewImg" alt="${vo.timg2}" style="height: 60vh;">
 					      <div class="carousel-caption d-none d-md-block">
 					        <h5>${vo.timg2}</h5>
-					        <p>${vo.tag}</p>
+					        <p>${vo.region}</p>
 					      </div>
 					    </div>
 					   </c:when>
@@ -120,7 +120,7 @@
 					      <img src="<%=request.getContextPath()%>/resources/img/upload/${vo.timg2}" class="d-block w-100 viewImg" alt="${vo.timg2}" style="height: 60vh;">
 					      <div class="carousel-caption d-none d-md-block">
 					        <h5>${vo.timg2}</h5>
-					        <p>${vo.tag}</p>
+					        <p>${vo.region}</p>
 					      </div>
 					    </div>
 					   </c:when>					   
@@ -235,7 +235,8 @@
 		</div>
 		
 		<div class="container " style ="border :1px solid lightgray;">
-		<form action="#" class="mb-3" name="myform" id="myform" method="post" >
+		<form action="trinsert.do" class="mb-3" name="myform" id="myform" method="post" >
+			<input type="hidden" name="tidx" value="${vo.tidx }">
 			<div class="container d-flex flex-wrap ">
 			<fieldset class="me-auto">
 						
@@ -257,11 +258,11 @@
 			
 			<div>
 				<textarea class="col-auto form-control" type="text" id="reviewContents"
-						  placeholder="리뷰 댓글"></textarea>
+						  placeholder="리뷰 댓글" name="trcontent"></textarea>
 			</div>
 		</form>		
 		<div class="d-flex flex-wrap container justify-content-end mb-2">
-				<button type="submit" class="btn btn-outline-info" onclick="location.href='#'" >저장</button>
+				<button type="submit" class="btn btn-outline-info" onclick="reply()" >저장</button>
 				
 				</div>			
 		
@@ -288,23 +289,48 @@
 		
 		</div>
 		
-	</div>
+		</div>
+		
+	<div class="container">
+		    <form id="commentForm" name="commentForm" method="post">
+		    <br><br>
+		        <div>
+		            <div>
+		                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+		            </div>
+		            <div>
+		                <table class="table">                    
+		                    <tr>
+		                        <td>
+		                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+		                            <br>
+		                            <div>
+		                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+		                            </div>
+		                        </td>
+		                    </tr>
+		                </table>
+		            </div>
+		        </div>
+		        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
+		    </form>
+		</div>
+		<div class="container">
+		    <form id="commentListForm" name="commentListForm" method="post">
+		        <div id="commentList">
+		        </div>
+		    </form>
+		</div>
 	
 	
 
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
-	function deleteO(){
-		if(confirm("정말 삭제하시겠습니까? ") == true){
-			document.frm.submit();
-			
-			
-		}else{
-			return ;
-		}
-		
-		
+	function reply(){
+		document.myform.submit();
 	}
+	
+	
 	
 	
 	

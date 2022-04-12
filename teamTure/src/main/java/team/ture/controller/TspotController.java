@@ -1,7 +1,6 @@
 package team.ture.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import team.ture.service.TreplyService;
 import team.ture.service.TspotService;
-import team.ture.vo.BoardVO;
 import team.ture.vo.SarchVO;
+import team.ture.vo.TreplyVO;
 import team.ture.vo.TspotVO;
 
 /**
@@ -29,6 +29,8 @@ public class TspotController {
 	
 	@Autowired
 	private TspotService tspotService;
+	@Autowired
+	private TreplyService treplyService;
 
 	
 	
@@ -55,8 +57,11 @@ public class TspotController {
 	  
 			
 		TspotVO vo = tspotService.detail(tidx);
+		List<TreplyVO> list = treplyService.list();
 			 
 		model.addAttribute("vo",vo);
+		model.addAttribute("list",list); 
+		
 			
 	  
 	 
@@ -104,49 +109,49 @@ public class TspotController {
 			switch(map.getLidx()) {
 				
 			case 1:
-				map.setTag("고창군");
+				map.setRegion("고창군");
 				break;
 			case 2:
-				map.setTag("군산시");
+				map.setRegion("군산시");
 				break;
 			case 3:
-				map.setTag("김제시");
+				map.setRegion("김제시");
 				break;
 			case 4:
-				map.setTag("남원시");
+				map.setRegion("남원시");
 				break;
 			case 5:
-				map.setTag("무주군");
+				map.setRegion("무주군");
 				break;
 			case 6:
-				map.setTag("부안군");
+				map.setRegion("부안군");
 				break;
 			case 7:
-				map.setTag("순창군");
+				map.setRegion("순창군");
 				break;
 			case 8:
-				map.setTag("완주군");
+				map.setRegion("완주군");
 				break;
 			case 9:
-				map.setTag("익산시");
+				map.setRegion("익산시");
 				break;
 			case 10:
-				map.setTag("임실군");
+				map.setRegion("임실군");
 				break;
 			case 11:
-				map.setTag("장수군");
+				map.setRegion("장수군");
 				break;
 			case 12:
-				map.setTag("전주시");
+				map.setRegion("전주시");
 				break;
 			case 13:
-				map.setTag("정읍시");
+				map.setRegion("정읍시");
 				break;
 			case 14:
-				map.setTag("진안군");
+				map.setRegion("진안군");
 				break;
 			case 15:
-				map.setTag("타 지역");
+				map.setRegion("타 지역");
 				break;
 			
 			
@@ -174,49 +179,49 @@ public class TspotController {
 			switch(map.getLidx()) {
 				
 			case 1:
-				map.setTag("고창군");
+				map.setRegion("고창군");
 				break;
 			case 2:
-				map.setTag("군산시");
+				map.setRegion("군산시");
 				break;
 			case 3:
-				map.setTag("김제시");
+				map.setRegion("김제시");
 				break;
 			case 4:
-				map.setTag("남원시");
+				map.setRegion("남원시");
 				break;
 			case 5:
-				map.setTag("무주군");
+				map.setRegion("무주군");
 				break;
 			case 6:
-				map.setTag("부안군");
+				map.setRegion("부안군");
 				break;
 			case 7:
-				map.setTag("순창군");
+				map.setRegion("순창군");
 				break;
 			case 8:
-				map.setTag("완주군");
+				map.setRegion("완주군");
 				break;
 			case 9:
-				map.setTag("익산시");
+				map.setRegion("익산시");
 				break;
 			case 10:
-				map.setTag("임실군");
+				map.setRegion("임실군");
 				break;
 			case 11:
-				map.setTag("장수군");
+				map.setRegion("장수군");
 				break;
 			case 12:
-				map.setTag("전주시");
+				map.setRegion("전주시");
 				break;
 			case 13:
-				map.setTag("정읍시");
+				map.setRegion("정읍시");
 				break;
 			case 14:
-				map.setTag("진안군");
+				map.setRegion("진안군");
 				break;
 			case 15:
-				map.setTag("타 지역");
+				map.setRegion("타 지역");
 				break;
 			
 			
@@ -242,49 +247,49 @@ public class TspotController {
 			switch(map.getLidx()) {
 				
 			case 1:
-				map.setTag("고창군");
+				map.setRegion("고창군");
 				break;
 			case 2:
-				map.setTag("군산시");
+				map.setRegion("군산시");
 				break;
 			case 3:
-				map.setTag("김제시");
+				map.setRegion("김제시");
 				break;
 			case 4:
-				map.setTag("남원시");
+				map.setRegion("남원시");
 				break;
 			case 5:
-				map.setTag("무주군");
+				map.setRegion("무주군");
 				break;
 			case 6:
-				map.setTag("부안군");
+				map.setRegion("부안군");
 				break;
 			case 7:
-				map.setTag("순창군");
+				map.setRegion("순창군");
 				break;
 			case 8:
-				map.setTag("완주군");
+				map.setRegion("완주군");
 				break;
 			case 9:
-				map.setTag("익산시");
+				map.setRegion("익산시");
 				break;
 			case 10:
-				map.setTag("임실군");
+				map.setRegion("임실군");
 				break;
 			case 11:
-				map.setTag("장수군");
+				map.setRegion("장수군");
 				break;
 			case 12:
-				map.setTag("전주시");
+				map.setRegion("전주시");
 				break;
 			case 13:
-				map.setTag("정읍시");
+				map.setRegion("정읍시");
 				break;
 			case 14:
-				map.setTag("진안군");
+				map.setRegion("진안군");
 				break;
 			case 15:
-				map.setTag("타 지역");
+				map.setRegion("타 지역");
 				break;
 			
 			
@@ -307,49 +312,49 @@ public class TspotController {
 			switch(map.getLidx()) {
 				
 				case 1:
-					map.setTag("고창군");
+					map.setRegion("고창군");
 					break;
 				case 2:
-					map.setTag("군산시");
+					map.setRegion("군산시");
 					break;
 				case 3:
-					map.setTag("김제시");
+					map.setRegion("김제시");
 					break;
 				case 4:
-					map.setTag("남원시");
+					map.setRegion("남원시");
 					break;
 				case 5:
-					map.setTag("무주군");
+					map.setRegion("무주군");
 					break;
 				case 6:
-					map.setTag("부안군");
+					map.setRegion("부안군");
 					break;
 				case 7:
-					map.setTag("순창군");
+					map.setRegion("순창군");
 					break;
 				case 8:
-					map.setTag("완주군");
+					map.setRegion("완주군");
 					break;
 				case 9:
-					map.setTag("익산시");
+					map.setRegion("익산시");
 					break;
 				case 10:
-					map.setTag("임실군");
+					map.setRegion("임실군");
 					break;
 				case 11:
-					map.setTag("장수군");
+					map.setRegion("장수군");
 					break;
 				case 12:
-					map.setTag("전주시");
+					map.setRegion("전주시");
 					break;
 				case 13:
-					map.setTag("정읍시");
+					map.setRegion("정읍시");
 					break;
 				case 14:
-					map.setTag("진안군");
+					map.setRegion("진안군");
 					break;
 				case 15:
-					map.setTag("타 지역");
+					map.setRegion("타 지역");
 					break;
 				
 				
@@ -437,49 +442,49 @@ public class TspotController {
 		switch(map.getLidx()) {
 		
 		case 1:
-			map.setTag("고창군");
+			map.setRegion("고창군");
 			break;
 		case 2:
-			map.setTag("군산시");
+			map.setRegion("군산시");
 			break;
 		case 3:
-			map.setTag("김제시");
+			map.setRegion("김제시");
 			break;
 		case 4:
-			map.setTag("남원시");
+			map.setRegion("남원시");
 			break;
 		case 5:
-			map.setTag("무주군");
+			map.setRegion("무주군");
 			break;
 		case 6:
-			map.setTag("부안군");
+			map.setRegion("부안군");
 			break;
 		case 7:
-			map.setTag("순창군");
+			map.setRegion("순창군");
 			break;
 		case 8:
-			map.setTag("완주군");
+			map.setRegion("완주군");
 			break;
 		case 9:
-			map.setTag("익산시");
+			map.setRegion("익산시");
 			break;
 		case 10:
-			map.setTag("임실군");
+			map.setRegion("임실군");
 			break;
 		case 11:
-			map.setTag("장수군");
+			map.setRegion("장수군");
 			break;
 		case 12:
-			map.setTag("전주시");
+			map.setRegion("전주시");
 			break;
 		case 13:
-			map.setTag("정읍시");
+			map.setRegion("정읍시");
 			break;
 		case 14:
-			map.setTag("진안군");
+			map.setRegion("진안군");
 			break;
 		case 15:
-			map.setTag("타 지역");
+			map.setRegion("타 지역");
 			break;
 		
 		
@@ -501,6 +506,17 @@ public class TspotController {
 		
 		return "redirect:list.do";
 	}
+	
+	@RequestMapping(value = "/trinsert.do", method = RequestMethod.POST)
+	public String trinsert(Locale locale, Model model, int tidx) throws Exception {
+		
+		
+		
+		
+		return "redirect:view.do?tidx="+tidx;
+	}
+	
+	
 	
 	
 	

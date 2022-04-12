@@ -9,6 +9,7 @@
         <typeAlias type="team.ture.vo.LocationVO" alias="locationVO"/>
         <typeAlias type="team.ture.vo.TspotVO" alias="tspotVO"/>
         <typeAlias type="team.ture.vo.SarchVO" alias="sarchVO"/>
+        <typeAlias type="team.ture.vo.TreplyVO" alias="treplyVO"/>
     </typeAliases>
     
 	    

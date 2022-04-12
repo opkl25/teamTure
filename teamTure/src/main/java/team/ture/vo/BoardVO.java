@@ -9,10 +9,31 @@ public class BoardVO {
 	private String bwriter;
 	private String bwdate;
 	private String filename;
+	private String delny;
+	private String bcheck;
+	private String tag;
 	
 	
 	
 	
+	public String getDelny() {
+		return delny;
+	}
+	public void setDelny(String delny) {
+		this.delny = delny;
+	}
+	public String getBcheck() {
+		return bcheck;
+	}
+	public void setBcheck(String bcheck) {
+		this.bcheck = bcheck;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public String getFilename() {
 		return filename;
 	}

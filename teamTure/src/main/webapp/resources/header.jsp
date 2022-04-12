@@ -15,6 +15,13 @@
 	
 	<!-- jquery -->
 	<script src="<%=request.getContextPath()%>/resources/js/jquery-3.6.0.min.js"></script>
+	
+	<!-- 캘린더 LINK OR CSS  -->
+	<link href="<%=request.getContextPath() %>/css/cal.css"  rel="stylesheet" />
+	
+	<script src='/controller/resources/fullcalendar/lib/main.js'></script>
+
+	<link href='/controller/resources/fullcalendar/lib/main.css' rel='stylesheet' />
 
 
 

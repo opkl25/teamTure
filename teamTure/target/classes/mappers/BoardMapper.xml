@@ -61,8 +61,7 @@
 		<![CDATA[
 		INSERT INTO 
 					board(
-					 bidx
-					,bsubject
+					 bsubject
 					,bcontent
 					,bwriter
 					,bwdate
@@ -71,11 +70,10 @@
 					,filename
 					)
 			VALUES(
-					BIDX_SEQ.nextval
-					, #{bsubject}
+					  #{bsubject}
 					, #{bcontent}
 					,	'테스터' 
-					,	SYSDATE
+					,	now() 
 					,	1
 					, #{filename}
 					)
