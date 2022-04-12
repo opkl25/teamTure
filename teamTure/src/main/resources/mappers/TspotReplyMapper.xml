@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="team.ture.mapper.locationMapper">
+  
+  	<select id="listTreply" resultType="treplyVO">
+  		
+  		SELECT tridx
+  			, trwriter
+  			, trcontent
+  			, trwdate
+  			
+  			
+  		FROM TSPOTREPLY
+  	  	  	
+  	
+  	
+  	</select>
+  	
+  	<insert id="insertTreply" parameterType="treplyVO" >
+  	
+  		<![CDATA[
+		INSERT INTO 
+					tspotreply(
+					
+					trcontent
+					, trwriter
+					, trwdate
+					, midx
+					, lidx
+					, tidx
+					
+					)
+					
+			VALUES(
+					 
+					 #{trcontent}
+					 , #{trwriter}
+					 , now()
+					 , #{midx}
+					 , #{lidx}
+					 , #{tidx}
+					 )
+		]]>	 
+				
+					
+		
+	<selectKey resultType="integer" keyProperty="tridx" order="AFTER"><!--order = AFTER BEFORE-->
+		SELECT MAX(tridx) FROM TSPOTREPLY
+  	</selectKey>
+  	
+  	
+  	</insert>
+  
+  
+  
+  </mapper>
