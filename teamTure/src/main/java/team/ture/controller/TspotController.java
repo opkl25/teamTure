@@ -1,6 +1,7 @@
 package team.ture.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import team.ture.service.TreplyService;
@@ -57,10 +59,10 @@ public class TspotController {
 	  
 			
 		TspotVO vo = tspotService.detail(tidx);
-		List<TreplyVO> list = treplyService.list();
+		List<TreplyVO> list = treplyService.list(); 
 			 
 		model.addAttribute("vo",vo);
-		model.addAttribute("list",list); 
+		model.addAttribute("list",list);  
 		
 			
 	  
@@ -507,14 +509,24 @@ public class TspotController {
 		return "redirect:list.do";
 	}
 	
+	
 	@RequestMapping(value = "/trinsert.do", method = RequestMethod.POST)
-	public String trinsert(Locale locale, Model model, int tidx) throws Exception {
+	public String trinsert(Locale locale, Model model, TreplyVO vo, int tidx) throws Exception {
 		
-		
+		treplyService.insert(vo);
 		
 		
 		return "redirect:view.do?tidx="+tidx;
 	}
+	
+	@RequestMapping(value="/getUserCount.do")
+	public @ResponseBody HashMap<String, Object> getUserCount() throws Exception {	
+	HashMap<String, Object> result = treplyService.getUserCount(); 
+	
+	return result;
+	}
+	
+	
 	
 	
 	

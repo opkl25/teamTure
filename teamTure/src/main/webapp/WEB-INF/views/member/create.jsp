@@ -5,21 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="<%=request.getContextPath() %>/resources/js/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
-<script>
-        function joinform_check(){
-            var id = document.getElementById("floatingInput");
-            if(id.value == ""){
-                alert("아이디를 입력해주세요.");
-                id.focus();
-                return false;
-            }
-            document.joinform_submit();
-        }
-    </script>
+
 </head>
 <body>
+<script type="text/javascript">
+		function fn_idChk(){
+			$.ajax({
+				url : "/controller/member/idChk.do",
+				type : "post",
+				dataType : "json",
+				data : {"mid" : $("#mid").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+	</script>
 
 	<section>
         
@@ -30,7 +39,7 @@
             
             <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/controller/login.do'"></button>
-                <form action = "createOk.jsp" method="post" id="frm" class="validation-form" name="frm">
+                <form action = "insert.do" method="post" id="frm" class="validation-form" name="frm">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content rounded-5 shadow">
                       <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -41,13 +50,13 @@
                       <div class="modal-body p-5 pt-0">
                         
                         <div class="form-floating mb-3 id">
-                          <input type="text" class="form-control rounded-4 id" id="floatingInput" name="id" onblur="checkFn('id')">
+                          <input type="text" class="form-control rounded-4 id" id="id" name="mid" onblur="checkFn('id')">
                           <label for="floatingInput">*아이디<span class="check"></span></label>
-                          
-                          <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
+                         
+                          <input type="button" class="btn btn-success" value="중복확인" onclick="fn_idChk()">
                         </div>
                           <div class="form-floating mb-3 pwd">
-                            <input type="password" class="form-control rounded-4" name="pwd" onblur="checkFn('pwd')">
+                            <input type="password" class="form-control rounded-4" name="mpwd" onblur="checkFn('pwd')">
                             <label for="floatingInput">*비밀번호<span class="check"></span></label>
                           </div>
                           <div class="form-floating mb-3 repwd">
@@ -56,18 +65,18 @@
                           </div>
                            
                             <div class="form-floating mb-3 nickname">
-                            <input type="text" class="form-control rounded-4 nickname" id="floatingInput" name="nickname" onblur="checkFn('nickname')">
+                            <input type="text" class="form-control rounded-4 nickname" id="floatingInput" name="mnic" onblur="checkFn('nickname')">
                             <label for="floatingInput">*닉네임<span class="check"></span></label>
                             
                             <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
                           </div>
                           <div class="form-floating mb-3 name">
-                            <input type="text" class="form-control rounded-4" name="name" onblur="checkFn('name')">
+                            <input type="text" class="form-control rounded-4" name="mname" onblur="checkFn('name')">
                             <label for="floatingInput">*이름<span class="check"></span></label>
                           </div>
                           
                           <div class="form-floating mb-3 phone">
-                            <input type="text" class="form-control rounded-4" name="phone" onblur="checkFn('phone')">
+                            <input type="text" class="form-control rounded-4" name="mphone" onblur="checkFn('phone')">
                             <label for="floatingInput">*연락처<span class="check"></span></label>
                           </div>
                           
@@ -78,7 +87,7 @@
                           </div>
                         
                           <div class="form-floating">
-                                <input class="form-control rounded-4" type="text" id="sample6_address">
+                                <input class="form-control rounded-4" type="text" name="maddr" id="sample6_address">
                                 <label for="floatingInput">주소</label>
                           </div>
                         
@@ -93,12 +102,12 @@
                           </div>
                           
                           <div class="form-floating mb-3 birth">
-                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="birth" placeholder="" onblur="checkFn('birth')">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="mbirth" placeholder="" onblur="checkFn('birth')">
                             <label for="floatingInput">*생년월일<span class="check"></span></label>
                           </div>
                           
                           <div class="form-floating mb-3 email">
-                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="email" placeholder="" onblur="checkFn('email')">
+                            <input type="text" class="form-control rounded-4" id="floatingPassword" name="memail" placeholder="" onblur="checkFn('email')">
                             <label for="floatingInput">*이메일<span class="check"></span></label>
                           </div>
                           
@@ -107,9 +116,9 @@
                               <label style="top: -15px;">성별</label>
                           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                               
-                              <input type="radio" class="btn-check me-auto" name="gender" id="btnradio1" autocomplete="off" value="M" checked="">
+                              <input type="radio" class="btn-check me-auto" name="mgender" id="btnradio1" autocomplete="off" value="M" >
                               <label class="btn btn-outline-success" for="btnradio1">남자</label>
-                              <input type="radio" class="btn-check" name="gender" id="btnradio2" autocomplete="off" value="W" checked="">
+                              <input type="radio" class="btn-check" name="gender" id="btnradio2" autocomplete="off" value="W" >
                               <label class="btn btn-outline-success" for="btnradio2">여자</label>
                           
                         </div>
@@ -134,11 +143,12 @@
         </div>
                 
         </section>
+        
         <script>
           function checkFn(type){
             if(type == 'id'){
-                var checkId = /^[a-z]+[a-z0-9]{5,11}/g;
-                var value = document.frm.id.value;
+                var checkId = /^[a-zA-Z0-9]{5,12}$/
+                var value = document.frm.mid.value;
                 var span = document.getElementsByClassName("id")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -155,7 +165,7 @@
                 }
             }else if(type == 'pwd'){
                 var checkPass = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/
-                var value = document.frm.pwd.value;
+                var value = document.frm.mpwd.value;
                 var span = document.getElementsByClassName("pwd")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -171,7 +181,7 @@
                     span.style.display = "inline";
                 }
             }else if(type == 'repwd'){
-                var value = document.frm.pwd.value;
+                var value = document.frm.mpwd.value;
                 var value2 = document.frm.repwd.value;
                 var span = document.getElementsByClassName("repwd")[0].getElementsByTagName("span")[0];
                 if(value2 == ""){
@@ -188,7 +198,7 @@
                 }
               }else if(type == 'nickname'){
                 var checkNickname = /^[a-z]+[a-z0-9]{2,7}/g;
-                var value = document.frm.nickname.value;
+                var value = document.frm.mnic.value;
                 var span = document.getElementsByClassName("nickname")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -205,7 +215,7 @@
                 }
             }else if(type == 'name'){
                 var checkName = /^[가-힣]/g;
-                var value = document.frm.name.value;
+                var value = document.frm.mname.value;
                 var span = document.getElementsByClassName("name")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -221,7 +231,7 @@
                 }
             }else if(type == 'email'){
                 var checkEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/g;
-                var value = document.frm.email.value;
+                var value = document.frm.memail.value;
                 var span = document.getElementsByClassName("email")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -237,7 +247,7 @@
                 }
             }else if(type == 'phone'){
                 var checkPhone = /^[0-9]{10,15}/g;
-                var value = document.frm.phone.value;
+                var value = document.frm.mphone.value;
                 var span = document.getElementsByClassName("phone")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -254,7 +264,7 @@
             
             }else if(type == 'birth'){
                 var checkBirth = /^[0-9]{6}/g;
-                var value = document.frm.birth.value;
+                var value = document.frm.mbirth.value;
                 var span = document.getElementsByClassName("birth")[0].getElementsByTagName("span")[0];
                 if(value == ""){
                     span.textContent = "*필수";
@@ -271,6 +281,7 @@
             
             }
         }
+        
 
         </script>
 	

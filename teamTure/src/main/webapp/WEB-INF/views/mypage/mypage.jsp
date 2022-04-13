@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+
 <html lang="ko">
   <head>
   
@@ -18,78 +19,98 @@
   </head>
 <body>
 <%@ include file = "/resources/header.jsp" %>
-   <div class="container px-4">
-   <div class="row gx-5">
-   <div class="container-sm prowrap">
-		    <div class="navi" role="banner">
-		        
-		        <div class="profile_inner">
-		          <div class="proimg"><img src="/controller/img/logo2.png"/></div>
-		          <div class="proinfo">
-		            <p><strong>닉네임 영역</strong></p>
-		            <p><small>&nbsp;아이디 영역</small></p>
-		          </div>
-		        </div>
-		    </div>
-    <div class="container">
-   
-      
-                <div class="twrap">
-                  <div class=" content">
-                    <table class="table table-defualt table-borderless table align-middle">
-                      <thead>
-                        <tr>
-                          <th class="table-success">내프로필</th>
-                          <th class="table-success prosummary"></th>
-                        </tr>
-                      </thead>
-                      <tr>
-                        <th style="width: 80px;">아이디</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>이름</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>닉네임</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>주소</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>연락처</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>성별</th>
-                        <td>내용</td>
-                      </tr>
-                      <tr>
-                        <th>이메일</th>
-                        <td>내용</td>
-                      </tr>
-                    </table>
-                    <table class="table table-defualt table-borderless table align-middle" id="table">
-                      <tr>
-                        <th class="table-success" style="height: 37px;">나의 활동</th>
-                        <td class="table-success prosummary"></td>
-                      </tr>
-                      <tr>
-                        <th>작성글</th>
-                        <td>내용</td>
-                      </tr>
-                    </table>
-                  </div>
-              </div>
-          
-        </div> 
-    </div> 
-    </div>
-     
-      </div>
+  
+  			<div class="container">
+   				<table class="table" id="table">
+                     <tr>
+                       <th style="height: 37px; width:120px;">My Profile</th>
+                       <td><c:if test="${member != null}">
+							<h2>${member.mid}님</h2>
+							<h2>${member.mname}</h2>
+			
+							</c:if>
+	
+                     </tr>
+                     <tr>
+                     <c:if test="${member != null}">
+                       <th style="width:120px;">프로필 이미지</th>
+                       <td>닉네임<small>&nbsp;&nbsp;${member.mid}</small></td>
+                    </c:if>
+                     </tr>
+                     
+                 </table>
+                 	
+      				<div class="container">
+                		<div class="row">
+                			<div class="col">
+		                    <c:if test="${member != null}">
+		                    
+		                    <table class="table table-defualt table-borderless table align-middle">
+		                      <thead>
+		                        <tr>
+		                          <th class="table-success" style="width: 120px;">My Info</th>
+		                          <th class="table-success prosummary"></th>
+		                        </tr>
+		                      </thead>
+		                      <tr>
+		                        <th style="width: 120px;">아이디</th>
+		                        
+		                        <td>내용${member.mid}</td>
+		                         
+		                      </tr>
+		                      <tr>
+		                        <th>이름</th>
+		                        <td>내용${member.mname}</td>
+		                      </tr>
+		                      <tr>
+		                        <th>닉네임</th>
+		                        <c:choose>
+				                        <c:when test="${member.mnic ne '닉네임을 설정해주세요' }">
+				                        <td>내용 ${member.mnic}</td>   <!-- 닉네임을 등록한사람 -->
+				                        </c:when>
+				                        
+				                        <c:when test="${member.mnic eq '닉네임을 설정해주세요' }">
+				                        <td> 닉네임을 설정해주세요 </td>  <!-- 닉네임을 등록안한사람 -->
+				                        </c:when>
+		                        </c:choose>
+		                      </tr>
+		                      <tr>
+		                        <th>주소</th>
+		                        <td>내용${member.maddr}</td>
+		                      </tr>
+		                      <tr>
+		                        <th>연락처</th>
+		                        <td>내용${member.mphone}</td>
+		                      </tr>
+		                      <tr>
+		                        <th>성별</th>
+		                        <td>내용${member.mgender}</td>
+		                      </tr>
+		                      <tr>
+		                        <th>이메일</th>
+		                        <td>내용${member.memail}</td>
+		                      </tr>
+		                    </table>
+		                   
+		                    </c:if>
+		                   </div>
+		                   <div class="col">
+		                    <table class="table table-defualt table-borderless table align-middle" id="table">
+		                      <tr>
+		                        <th class="table-success" style="height: 37px; width: 120px;">My Activity</th>
+		                        <td class="table-success prosummary"></td>
+		                      </tr>
+		                      <tr>
+		                        <th>작성글</th>
+		                        <td>내용</td>
+		                      </tr>
+		                    </table>
+		                    
+		                    </div>
+                	</div>
+                </div> 
+          	</div>
+        
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>

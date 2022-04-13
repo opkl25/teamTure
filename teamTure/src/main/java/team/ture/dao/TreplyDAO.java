@@ -1,5 +1,6 @@
 package team.ture.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,5 +21,14 @@ public class TreplyDAO {
 	public List<TreplyVO> list() throws Exception {
 				
 		return sqlSession.selectList(Namespace+".listTreply");
+	}
+	
+	public int insert(TreplyVO vo) throws Exception{
+		return sqlSession.insert(Namespace+".insertTreply",vo);
+	}
+	
+	public HashMap<String, Object> getUserCount() throws Exception{
+		
+		return (HashMap<String, Object>) sqlSession.selectList(Namespace+".getUserCount");
 	}
 }

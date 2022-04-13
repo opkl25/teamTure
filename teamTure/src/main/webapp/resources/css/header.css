@@ -89,25 +89,6 @@ footer{
 }
 
 
-/* tspot */
-#tin{
-	background-color : red;
-	color : red;
-	
-	
-}
-
-#divInput1{
-	display:none;
-}
-#divInput2{
-	display:none;
-}
-
-
-
-/* tspot end */
-
 
 
 #jeonbukimg{
@@ -117,7 +98,7 @@ footer{
 
 #add{
 	text-align:center;
-	background-color: #dff9fb;
+	background-color: #81ecec;
 	
 }
 
@@ -207,4 +188,22 @@ footer{
     border-radius: 5px;
     font-size: 16px;
     resize: none;
+}
+#login{
+	display:inline;
+	font-size:15px;
+}
+#sir{
+	font-weight:bold;
+	font-size: 20px;
+}
+#logout{
+	border-radius:14px;
+	background-color:lightgray;
+	color:white;
+	border:none;
+	
+}
+.id_already{
+	color:#6A82FB; display: none;
 }

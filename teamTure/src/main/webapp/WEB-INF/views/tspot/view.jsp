@@ -241,6 +241,10 @@
 		<div class="container " style ="border :1px solid lightgray;">
 		<form action="trinsert.do" class="mb-3" name="myform" id="myform" method="post" >
 			<input type="hidden" name="tidx" value="${vo.tidx }">
+			<input type="hidden" name="lidx" value="${vo.lidx }">
+			<input type="hidden" name="trwriter" value="테스터">
+			
+
 			<div class="container d-flex flex-wrap ">
 			<fieldset class="me-auto">
 						
@@ -275,17 +279,34 @@
 			
 			<tbody>
 					<c:forEach items="${list }" var="lo">
-					<tr>
+					<c:choose>
 						
-						<th>작성자</th>
-						<td>${lo.trwriter } </td>
+						<c:when test="${vo.tidx eq lo.tidx }">
+						<tr>
 						
-					</tr>
+							<th>작성자</th>
+							<td>${lo.trwriter } </td>
+							
+						</tr>
+						
+						<tr>
+							<th>내용</th>
+						
+						
+							<td ><p >${lo.trcontent }</p> </td>
+							
+							
+						</tr>	
+						
+						
+						
+						</c:when>
+							
+						
+					</c:choose>
 					
-					<tr>
-						<th>내용</th>
-						<td ><p >${lo.trcontent }</p> </td>
-					</tr>
+						
+					
 					</c:forEach>
 					
 			</tbody>
@@ -296,36 +317,9 @@
 		
 		</div>
 		
-	<div class="container">
-		    <form id="commentForm" name="commentForm" method="post">
-		    <br><br>
-		        <div>
-		            <div>
-		                <span><strong>Comments</strong></span> <span id="cCnt"></span>
-		            </div>
-		            <div>
-		                <table class="table">                    
-		                    <tr>
-		                        <td>
-		                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
-		                            <br>
-		                            <div>
-		                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
-		                            </div>
-		                        </td>
-		                    </tr>
-		                </table>
-		            </div>
-		        </div>
-		        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
-		    </form>
-		</div>
-		<div class="container">
-		    <form id="commentListForm" name="commentListForm" method="post">
-		        <div id="commentList">
-		        </div>
-		    </form>
-		</div>
+		<div id="list"></div>
+		
+	
 	
 	
 
@@ -335,11 +329,60 @@
 		document.myform.submit();
 	}
 	
+	$(document).ready(function(){
+		getComment();
+		
+	});
+	
+	function getComment(){
+		
+		 var tidx = $("input[name='tidx']").val()
+
+		 console.log(tidx);
+		 
+		 
+		/*
+		$.ajax({
+			url: "view.do?tidx="+tidx,
+			type: "get",
+			success: function(data){
+				var json = JSON.parse(data.trim()); //trim 앞뒤 공백 제거
+				console.log(json);
+				var html = "";
+				html += "<table border='1' id= 'test'>";
+				html += "<thead>";
+				html += "<tr>";
+				html += "<th>글번호</th><th>제목</th><th>작성자</th>"
+				html += "</tr>";
+				html += "</thead>";
+				html += "<tbody>";
+				for(var i=0; i<json.length; i++){
+					html += "<tr>";
+					html += "<td>"+json[i].tridx+"</td>";
+					html += "<td>"+json[i].trcontent+"</td>";
+					html += "<td>"+json[i].trwriter+"</td>";
+					html += "<td><button onclick='modify("+json[i].tridx+",this)'>수정</button>"
+							+"<button onclick='deleteFn("+json[i].tridx+",this)'>삭제</button></td>";
+					html += "</tr>";
+				}
+				html += "</tbody>";
+				html += "</table>";
+				
+				$("#list").html(html);
+			}
+		}); */
+		
+		
+	
+		
+	}
 	
 	
 	
 	
+
 	</script>
+	
 	
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

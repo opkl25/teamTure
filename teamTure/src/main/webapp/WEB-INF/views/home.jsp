@@ -231,7 +231,7 @@
 		
 		
 		
-		
+		<a href="/controller/member/list.do">회원목록</a>
 		
 		
 		<%@ include file = "/resources/footer.jsp" %>
