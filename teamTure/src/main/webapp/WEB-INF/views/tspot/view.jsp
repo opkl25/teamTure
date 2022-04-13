@@ -49,6 +49,10 @@
 			  	<c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png' && vo.timg eq '빈 이미지 파일입니다.png' && vo.timg1 eq '빈 이미지 파일입니다.png'}">
 			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 3"></button>
 			  	</c:when>
+			  	
+			  	<c:when test="${vo.timg1 eq '빈 이미지 파일입니다.png' && vo.timg2 ne '빈 이미지 파일입니다.png' }">
+			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			  	</c:when>
 			  
 			  	<c:when test="${vo.timg2 ne '빈 이미지 파일입니다.png' }">
 			  			<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -270,18 +274,19 @@
 		<table class="table table-bordered table-light align-middle ">
 			
 			<tbody>
-					
+					<c:forEach items="${list }" var="lo">
 					<tr>
 						
 						<th>작성자</th>
-						<td> </td>
+						<td>${lo.trwriter } </td>
 						
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td ><p ></p> </td>
+						<td ><p >${lo.trcontent }</p> </td>
 					</tr>
+					</c:forEach>
 					
 			</tbody>
 		</table>

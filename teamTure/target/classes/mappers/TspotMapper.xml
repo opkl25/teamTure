@@ -72,7 +72,8 @@
     	       ,timg1 = #{timg1}
     	       ,timg2 = #{timg2}
     	       ,lidx = #{lidx}
-    	       ,tag  = #{tag}
+    	       ,region = #{region}
+    	       
     	       
     	WHERE tidx = #{tidx} 
     
