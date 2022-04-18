@@ -13,6 +13,7 @@
   			, trwdate
   			, lidx
   			, tidx
+  			, img
   			
   			
   		FROM TSPOTREPLY
@@ -21,23 +22,7 @@
   	
   	</select>
   	
-  	<resultMap type="HashMap" id="getUserCount">
   	
-  	</resultMap>
-  	
-  	<select id="getUserCount" resultType="HashMap">
-  	
-  		SELECT tridx
-  			, trwriter
-  			, trcontent
-  			, trwdate
-  			, lidx
-  			, tidx
-  			
-  			
-  		FROM TSPOTREPLY
-  		
-  	</select>
   	
   	<insert id="insertTreply" parameterType="treplyVO" >
   	
@@ -51,6 +36,7 @@
 					, lidx
 					, tidx
 					, midx
+					, img
 					)
 					
 			VALUES(
@@ -60,7 +46,8 @@
 					 , now()
 					 , #{lidx}
 					 , #{tidx}
-					 , 1
+					 , #{midx}
+					 , #{img}
 					 )
 		]]>	 
 				

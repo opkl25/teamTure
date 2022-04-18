@@ -1,7 +1,6 @@
 package team.ture.controller;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import team.ture.service.TreplyService;
@@ -59,10 +57,12 @@ public class TspotController {
 	  
 			
 		TspotVO vo = tspotService.detail(tidx);
+		List<TspotVO> alist = tspotService.alist();
 		List<TreplyVO> list = treplyService.list(); 
 			 
 		model.addAttribute("vo",vo);
 		model.addAttribute("list",list);  
+		model.addAttribute("alist",alist);
 		
 			
 	  
@@ -511,20 +511,50 @@ public class TspotController {
 	
 	
 	@RequestMapping(value = "/trinsert.do", method = RequestMethod.POST)
-	public String trinsert(Locale locale, Model model, TreplyVO vo, int tidx) throws Exception {
+	public String trinsert(HttpServletRequest request, Model model, @RequestParam("uploadFile") MultipartFile file, TreplyVO vo, int tidx) throws Exception {
 		
-		treplyService.insert(vo);
+		String path = request.getSession().getServletContext().getRealPath("/resources/img/upload");
+		
+		System.out.println("path::"+path);
+		
+		File dir = new File(path); 
+		if(!dir.exists()) { 
+			dir.mkdirs(); 
+		}
+		
+		if(!file.getOriginalFilename().isEmpty()) {
+		
+			file.transferTo(new File(path, file.getOriginalFilename())); //업로드한 파일 카피
+			model.addAttribute("msg", "File uploaded successfully.");
+			vo.setImg(file.getOriginalFilename());
+			
+			treplyService.insert(vo);
+			
+			
+			
+		}else if(vo.getImg()!=null) {
+			
+			
+			treplyService.insert(vo);
+								
+			
+		}else {
+			
+			vo.setImg("");
+			
+			treplyService.insert(vo);									
+			
+			
+			
+		}
 		
 		
 		return "redirect:view.do?tidx="+tidx;
+		
+		
+		
 	}
-	
-	@RequestMapping(value="/getUserCount.do")
-	public @ResponseBody HashMap<String, Object> getUserCount() throws Exception {	
-	HashMap<String, Object> result = treplyService.getUserCount(); 
-	
-	return result;
-	}
+		
 	
 	
 	

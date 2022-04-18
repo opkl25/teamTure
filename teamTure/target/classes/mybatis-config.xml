@@ -11,6 +11,7 @@
         <typeAlias type="team.ture.vo.SarchVO" alias="sarchVO"/>
         <typeAlias type="team.ture.vo.TreplyVO" alias="treplyVO"/>
         <typeAlias type="team.ture.vo.MemberVO" alias="memberVO"/>
+        <typeAlias type="team.ture.vo.BreplyVO" alias="breplyVO"/>
     </typeAliases>
     
 	    

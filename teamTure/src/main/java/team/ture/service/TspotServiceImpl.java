@@ -22,6 +22,14 @@ public class TspotServiceImpl implements TspotService {
 		
 		return list;
 	}
+	
+	@Override
+	public List<TspotVO> alist() throws Exception {
+		
+		List<TspotVO> alist =  tspotDao.alist();
+		
+		return alist;
+	}
 
 	
 	@Override

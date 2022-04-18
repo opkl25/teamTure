@@ -152,7 +152,7 @@
 		
 	
 	
-	<div id="boardtable" class="container col" >
+	<div id="boardtable" class="container col" style="height:100%;">
 		<table class="table table-bordered table-light table-responsive " id="viewTable">
 			
 			<tbody>
@@ -163,7 +163,7 @@
 					</tr>
 					
 					<tr>
-						<td id="viewTd">${vo.tcontent}</td>
+						<td id="viewTd"><textarea style="width:100%; height:70vh; white-space: pre-wrap; border:none; outline:none; resize: none;"  name="tcontent" readonly >${vo.tcontent }</textarea></td>
 					</tr>
 					
 			</tbody>
@@ -187,50 +187,44 @@
 		<div class="container ">
 			<div class="row row-cols-1 row-cols-md-4 justify-content-center">
 		    
-				<div class="card h-100 col" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
+		    <c:forEach items="${alist }" var="ao" begin="0" end="3"> 
+				<div class="col card " >
+				  	<a href="view.do?tidx=${ao.tidx }">
+				  		<c:choose>
+				  		
+				  			<c:when test="${ao.timg ne '빈 이미지 파일입니다.png' }">
+					  			<img src="<%=request.getContextPath()%>/resources/img/upload/${ao.timg}" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="${ao.timg}" >
+					  		</c:when>
+					  		
+					  		<c:when test="${ao.timg1 ne '빈 이미지 파일입니다.png' }">
+					  			<img src="<%=request.getContextPath()%>/resources/img/upload/${ao.timg1}" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="${ao.timg1}" >
+					  		</c:when>
+					  		
+					  		<c:when test="${ao.timg2 ne '빈 이미지 파일입니다.png' }">
+					  			<img src="<%=request.getContextPath()%>/resources/img/upload/${ao.timg2}" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="${ao.timg2}" >
+					  		</c:when>
+					  		
+					  		<c:otherwise>
+					  			<img src="<%=request.getContextPath()%>/resources/img/upload/빈 이미지 파일입니다.png"  class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="빈 이미지 파일입니다." >
+					  		</c:otherwise>
+					  		
+						</c:choose>
 				  	</a>
 				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
+				    <h5 class="card-title">${ao.tsubject}</h5>
+				    <c:choose>
+					  <c:when test="${fn:length(ao.tcontent) gt 20}">
+					    <p class="card-text"><c:out value="${fn:substring(ao.tcontent,0,20)}" />...</p>
+					  </c:when>
+					  <c:otherwise>
+					  	<c:out value="${ao.tcontent}" />
+					  </c:otherwise>
+					</c:choose>
 				    
 				  </div>
 				</div>
-		    
-		    
-		    	<div class="card col" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    
-		    <div class="card col" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
-		    
-		    <div class="card col" >
-				  	<a href="#">
-				  		<img src="/controller/img/gunsan/경암동 철길마을.jpg" id="listimg" class="card-img-top img-thumbnail img-fluid img-thumbnail" alt="경암동 철길마을" >
-				  	</a>
-				  <div class="card-body">
-				    <h5 class="card-title">군산 - 경암동 철길마을</h5>
-				    <p class="card-text">소개글입니다.</p>
-				    
-				  </div>
-				</div>
+		    </c:forEach>
+		    		    	
 		    
 		   </div>
 		
@@ -239,40 +233,52 @@
 		</div>
 		
 		<div class="container " style ="border :1px solid lightgray;">
-		<form action="trinsert.do" class="mb-3" name="myform" id="myform" method="post" >
+		<form action="trinsert.do" class="mb-3" name="myform" id="myform" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="tidx" value="${vo.tidx }">
 			<input type="hidden" name="lidx" value="${vo.lidx }">
+			<input type="hidden" name="midx" value="${member.midx }">
 			<input type="hidden" name="trwriter" value="테스터">
 			
 
-			<div class="container d-flex flex-wrap ">
-			<fieldset class="me-auto">
-						
-				<span class="text-bold">별점</span>
-				<input type="radio" name="reviewStar" value="5" id="rate1"><label
-					for="rate1">★</label>
-				<input type="radio" name="reviewStar" value="4" id="rate2"><label
-					for="rate2">★</label>
-				<input type="radio" name="reviewStar" value="3" id="rate3"><label
-					for="rate3">★</label>
-				<input type="radio" name="reviewStar" value="2" id="rate4"><label
-					for="rate4">★</label>
-				<input type="radio" name="reviewStar" value="1" id="rate5"><label
-					for="rate5">★</label>
-												
-			</fieldset>
+		<div class="container d-flex flex-wrap ">
+		
 			
-			</div>				
+					
 			
-			<div>
-				<textarea class="col-auto form-control" type="text" id="reviewContents"
+					<div class="inputArea">
+								 <label for="gdsImg" >이미지 첨부</label>
+								 <input type="file" id="gdsImg" name="uploadFile" style="display:none;"/>
+								 <input type="hidden" name="img" value="">
+								 <div class="select_img container"><img src=""  style="margin:20px 0; width:100%;"/></div>
+								 
+								 <script>
+								  $("#gdsImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img img").attr("src", data.target.result).width("100%").height("100%");        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								    
+																
+								   }
+								   $("input[name='uploadFile']").css('display','block');
+								  });
+								 </script>
+								 
+							</div>
+			
+			<div class="container">
+				<textarea class="col-auto form-control" id="reviewContents"
 						  placeholder="리뷰 댓글" name="trcontent"></textarea>
 			</div>
+		</div>	
 		</form>		
 		<div class="d-flex flex-wrap container justify-content-end mb-2">
 				<button type="submit" class="btn btn-outline-info" onclick="reply()" >저장</button>
 				
-				</div>			
+		</div>
+					
 		
 		<div id="boardtable" class="col table-responsive">
 		<table class="table table-bordered table-light align-middle ">
@@ -284,19 +290,33 @@
 						<c:when test="${vo.tidx eq lo.tidx }">
 						<tr>
 						
-							<th>작성자</th>
-							<td>${lo.trwriter } </td>
+							<th style="width:20%">${lo.trwriter } <small>(${lo.trwdate})</small></th>
+						
+							
+							<c:choose>
+									<c:when test="${lo.img != ''}">
+											
+											<td ><p >${lo.trcontent }</p> </td>
+									
+											<td style="width:20%"><img src="<%=request.getContextPath()%>/resources/img/upload/${lo.img}"  style="margin:20px 0; width:100%;" id="reimg" onclick="modalImg(this)"/></td>
+											<div class="modal">
+												  <span class="close">&times;</span>
+												  <img class="modal_content">
+											</div>
+											
+									</c:when>
+									
+									<c:otherwise>
+									
+											<td colspan="2"><p >${lo.trcontent }</p> </td>
+										
+									</c:otherwise>
+							</c:choose>
+							
+							
 							
 						</tr>
-						
-						<tr>
-							<th>내용</th>
-						
-						
-							<td ><p >${lo.trcontent }</p> </td>
-							
-							
-						</tr>	
+									
 						
 						
 						
@@ -325,6 +345,32 @@
 
 	<%@ include file = "/resources/footer.jsp" %>
 	<script>
+	const modal = document.querySelector(".modal");
+	const img = document.querySelector("#reimg");
+	const modal_img = document.querySelector(".modal_content");
+	const span = document.querySelector(".close");
+
+	function modalImg(obj){
+		modalDisplay("block");
+		
+		var imgC = obj.src;
+		
+		modal_img.src = imgC;	
+		
+		
+	}
+	span.addEventListener('click', ()=>{
+	  modalDisplay("none");
+	});
+	modal.addEventListener('click', ()=>{
+	  modalDisplay("none");
+	});
+	function modalDisplay(text){
+	  modal.style.display = text;
+	}
+	
+	
+	
 	function reply(){
 		document.myform.submit();
 	}

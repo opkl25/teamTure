@@ -26,9 +26,11 @@ public class TreplyDAO {
 	public int insert(TreplyVO vo) throws Exception{
 		return sqlSession.insert(Namespace+".insertTreply",vo);
 	}
-	
-	public HashMap<String, Object> getUserCount() throws Exception{
-		
-		return (HashMap<String, Object>) sqlSession.selectList(Namespace+".getUserCount");
+
+	public HashMap<String, Object> getUserCount() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	
 }

@@ -111,7 +111,7 @@
 							<input style="width:100%" type="text" name="tsubject" value="${vo.tsubject }">
 							
 							내용
-							<input style="width:100%; height:70vh" type="text" name="tcontent" value="${vo.tcontent }">				
+							<textarea style="width:100%; height:70vh; white-space: pre-wrap;"  name="tcontent" >${vo.tcontent }</textarea>				
 					</div>
 				
 				</td>

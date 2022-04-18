@@ -12,10 +12,19 @@ public class BoardVO {
 	private String delny;
 	private String bcheck;
 	private String tag;
+	private int midx;
 	
 	
 	
 	
+	
+	
+	public int getMidx() {
+		return midx;
+	}
+	public void setMidx(int midx) {
+		this.midx = midx;
+	}
 	public String getDelny() {
 		return delny;
 	}

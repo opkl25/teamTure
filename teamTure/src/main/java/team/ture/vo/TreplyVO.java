@@ -9,9 +9,16 @@ public class TreplyVO {
 	private int midx;
 	private int tidx;
 	private int lidx;
+	private String img;
 	
 	
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getTridx() {
 		return tridx;
 	}

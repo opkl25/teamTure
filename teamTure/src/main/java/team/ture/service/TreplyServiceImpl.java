@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import team.ture.dao.TreplyDAO;
 import team.ture.vo.TreplyVO;
-import team.ture.vo.TspotVO;
 
 @Service
 public class TreplyServiceImpl implements TreplyService {

@@ -12,5 +12,6 @@ public interface TspotService {
 	int insert(TspotVO map) throws Exception;
 	int update(TspotVO map) throws Exception;
 	int delete(int tidx) throws Exception;
+	List<TspotVO> alist() throws Exception;
 	
 }

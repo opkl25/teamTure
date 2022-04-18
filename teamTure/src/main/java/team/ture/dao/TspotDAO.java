@@ -36,6 +36,13 @@ public class TspotDAO {
 	public int delete(int tidx) throws Exception{
 		return sqlSession.update(Namespace+".deleteTspot", tidx);
 	}
+
+	public List<TspotVO> alist() throws Exception {
+		
+		return sqlSession.selectList(Namespace+".listTspot");
+		
+		
+	}
 	
 	
 	

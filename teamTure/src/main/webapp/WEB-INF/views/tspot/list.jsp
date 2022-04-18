@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,7 +170,17 @@
 				  	</a>
 				  <div class="card-body">
 				    <h5 class="card-title">${vo.tsubject}</h5>
-				    <p class="card-text">${vo.tcontent}</p>
+				    
+				    <c:choose>
+					  <c:when test="${fn:length(vo.tcontent) gt 20}">
+					    <p class="card-text"><c:out value="${fn:substring(vo.tcontent,0,20)}" />...</p>
+					  </c:when>
+					  <c:otherwise>
+					  	<c:out value="${vo.tcontent}" />
+					  </c:otherwise>
+					</c:choose>
+					
+				    
 				    
 				  </div>
 				</div>

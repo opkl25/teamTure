@@ -12,10 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import team.ture.service.BoardService;
+import team.ture.service.BreplyService;
 import team.ture.vo.BoardVO;
+import team.ture.vo.BreplyVO;
 import team.ture.vo.SarchVO;
 
 /**
@@ -27,6 +30,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private BreplyService breplyService;
 	
 	
 	
@@ -51,8 +57,12 @@ public class BoardController {
 	public String view(Locale locale, Model model, int bidx) throws Exception {
 		
 		BoardVO vo = boardService.detail(bidx);
+		List<BreplyVO> list = breplyService.list();
 		
+		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
+		
+		
 		
 		
 		return "board/view";
@@ -169,7 +179,7 @@ public class BoardController {
 			
 		}else if(map.getFilename()==null) {
 			
-			map.setFilename("빈 이미지 파일입니다.");
+			map.setFilename("");
 			
 			boardService.upload(map);
 			
@@ -201,13 +211,73 @@ public class BoardController {
 	 */
 	
 	
-	/*테스트*/
-	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
-	public String test(Locale locale, Model model) throws Exception {
+	/* 댓글 등록 and 업로드	 */
+	@RequestMapping(value="/breplyinsert" , method = RequestMethod.POST)
+	@ResponseBody
+	public BreplyVO breplyinsert(HttpServletRequest request, Model model, BreplyVO vo) throws Exception {
+						
+		String path = request.getSession().getServletContext().getRealPath("/resources/img/upload");
+		
+				
+		File dir = new File(path); 
+		if(!dir.exists()) { 
+			dir.mkdirs(); 
+		}
 		
 		
 		
-		return "board/test";
+		MultipartFile file=  vo.getUploadFile(); 
+				
+		  if(!file.getOriginalFilename().isEmpty()) {
+		  
+		  file.transferTo(new File(path, file.getOriginalFilename())); //업로드한 파일 카피
+		  model.addAttribute("msg", "File uploaded successfully.");
+		  vo.setImg(file.getOriginalFilename());
+		  
+		  breplyService.insert(vo);
+		  
+		  
+		  
+		  }else if(vo.getImg()!=null) {
+		  
+		  
+		  breplyService.insert(vo);
+		  
+		  
+		  }else {
+		  
+		  vo.setImg("");
+		  
+		  breplyService.insert(vo);
+		  
+		  
+		  
+		  }
+		 
+		
+		BreplyVO bro = breplyService.detail(vo.getBridx());
+		
+		
+		System.out.println("리턴 bro");
+		return bro;
+		
+		
+	}
+	
+	
+	
+	@RequestMapping(value="/deleteReply" , method = RequestMethod.POST)
+	@ResponseBody
+	public int deleteReply(HttpServletRequest request, Model model, int bridx) throws Exception {
+		
+		
+		breplyService.deleteReply(bridx);
+		
+		
+		return bridx;
+			
+		
+		
 	}
 	
 	

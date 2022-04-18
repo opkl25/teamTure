@@ -11,15 +11,16 @@
         	 , bcontent
         	 , bwriter
         	 , bwdate
+        	 , midx
         	 
           FROM board
           WHERE delny != 'Y'
-          <if test="sarchType != null and sarchType.equals('subject')">
-          and subject like '%'||#{sarchValue}||'%' 
+          <if test="sarchType != null and sarchType.equals('bsubject')">
+          and bsubject like '%'||#{sarchValue}||'%' 
           
           
           </if>
-          <if test="sarchType != null and sarchType.equals('writer')">
+          <if test="sarchType != null and sarchType.equals('bwriter')">
           and bwriter like '%'||#{sarchValue}||'%'
           </if>
           
@@ -34,6 +35,7 @@
         	 , bwriter
         	 , bwdate
         	 , filename
+        	 , midx
         	 
           FROM board
           WHERE bidx= #{bidx}
