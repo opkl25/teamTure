@@ -82,3 +82,19 @@ small{
 .prowrap{
 	width:40vw;
 }
+.inputArea{
+	border: 1px solid black;
+	width:150px;
+	height:150px;
+}
+.profile-img{
+	width:80px;
+	height:80px;
+	border-radius:50%;
+}
+.imgwrap{
+	border:1px solid lightgray;
+	width:80px;
+	height:80px;
+	border-radius:50%;
+}

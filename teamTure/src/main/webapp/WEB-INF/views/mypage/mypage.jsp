@@ -24,17 +24,38 @@
    				<table class="table" id="table">
                      <tr>
                        <th style="height: 37px; width:120px;">My Profile</th>
-                       <td><c:if test="${member != null}">
-							<h2>${member.mid}님</h2>
-							<h2>${member.mname}</h2>
-			
-							</c:if>
-	
+                       <td></td>
                      </tr>
                      <tr>
                      <c:if test="${member != null}">
-                       <th style="width:120px;">프로필 이미지</th>
-                       <td>닉네임<small>&nbsp;&nbsp;${member.mid}</small></td>
+                    	
+                     <div class="inputArea">
+                     <form action="upload.do" method="post" name="myform" enctype="multipart/form-data"  >
+                         <label for="mimg" >이미지 첨부</label>
+                         <input type="file" id="mimg" name="uploadFile" style="display:none;"/>
+                         <input type="hidden" name="mimg" value="${member.mimg}">
+                         <div>현재 이미지 : ${vo.mimg}</div>
+                         <div class="select_img container"><img src="<%=request.getContextPath()%>/resources/img/upload/${member.mimg}"  style="margin:20px 0; width:10%;"/></div>
+                         <input type="hidden" name="midx" value="${member.midx}">
+                         <script>
+                          $("#mimg").change(function(){
+                           if(this.files && this.files[0]) {
+                            var reader = new FileReader;
+                            reader.onload = function(data) {
+                             $(".select_img img").attr("src", data.target.result).width("100%").height("100%");        
+                            }
+                            reader.readAsDataURL(this.files[0]);
+                            
+                                                
+                           }
+                           $("input[name='uploadFile']").css('display','block');
+                          });
+                         </script>
+                         </form>
+                         <button type="button" class="btn btn-outline-info" onclick="reply()" >저장</button>
+                     </div>
+                       <th style="width:120px;"><div class="imgwrap"><img class="profile-img" src="<%=request.getContextPath()%>/resources/img/upload/${vo.mimg}"></div></th>
+                       <td>${member.mid}<small>&nbsp;&nbsp;${member.mname}</small></td>
                     </c:if>
                      </tr>
                      
@@ -111,7 +132,16 @@
                 </div> 
           	</div>
         
-
+			<script>
+				function reply(){
+					document.myform.submit();
+				}
+				
+				
+				
+				
+				
+				</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -32,6 +32,9 @@ public class HomeController {
 	@Autowired
 	private MemberService memberService;
 	
+		
+
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -81,38 +84,30 @@ public class HomeController {
 		return "member/create";
 	}
 	
-	@RequestMapping(value = "/mypage/nmypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/nmypage.do", method = RequestMethod.GET)
 	public String nmypage(Locale locale, Model model) {
 		
 		
 		
 		
-		return "mypage/nmypage";
+		return "member/nmypage";
 	}
-	@RequestMapping(value = "/mypage/mypage.do", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model) {
+	@RequestMapping(value = "/member/mypage.do", method = RequestMethod.GET)
+	public String mypage(Locale locale, Model model, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		
+		MemberVO login = (MemberVO)session.getAttribute("member");
+		
+		MemberVO vo = memberService.detail(login.getMidx());
+		
+		model.addAttribute("vo",vo);
 		
 		
 		
-		
-		return "mypage/mypage";
+		return "member/mypage";
 	}
-	@RequestMapping(value = "/login/findpwd.do", method = RequestMethod.GET)
-	public String findpwd(Locale locale, Model model) {
-		
-		
-		
-		
-		return "login/findpwd";
-	}
-	@RequestMapping(value = "/login/findid.do", method = RequestMethod.GET)
-	public String findid(Locale locale, Model model) {
-		
-		
-		
-		
-		return "login/findid";
-	}
+	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String member_list(Locale locale, Model model) {
 		
@@ -169,6 +164,48 @@ public class HomeController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/findidView.do", method=RequestMethod.GET)
+	public String findIdView() throws Exception{
+		return"member/findidView";
+	}
+	
+	@RequestMapping(value="/findId.do", method=RequestMethod.POST)
+	public String findId(MemberVO memberVO,Model model) throws Exception{
+		
+				
+		if(memberService.findIdCheck(memberVO.getMemail())==0) {
+		model.addAttribute("msg", "이메일을 확인해주세요");
+		return "member/findidView";
+		}else {
+		model.addAttribute("member", memberService.findId(memberVO.getMemail()));
+		return
+				"member/findid";
+		}
+	
+	}
+	
+	@RequestMapping(value="/findPwdView.do", method=RequestMethod.GET)
+	public String findPwdView() throws Exception{
+		return"member/findPwdView";
+	}
+	
+	@RequestMapping(value="/findPwd.do", method=RequestMethod.POST)
+	public String findPwd(MemberVO memberVO,Model model) throws Exception{
+		
+		
+		if(memberService.findPwdCheck(memberVO)==0)  {
+		model.addAttribute("msg", "이메일과 아이디를 확인해주세요");
+		return "member/findPwdView";
+		}else {
+		model.addAttribute("member", memberService.findPwd(memberVO));
+		return
+				"member/findPwd";
+		}
+	
+	}
+	
+	
 	
 	
 }

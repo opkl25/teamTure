@@ -9,26 +9,59 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath() %>/css/header.css"  rel="stylesheet" />
 
+<script>
+	
+		var idchk = "";
+		var nichk = "";
+		
+				function fn_idChk(){
+					var checkId = /^[a-z]+[a-z0-9]{5,15}/g;
+					var value = document.frm.mid.value;
+					console.log(value);
+					
+					$.ajax({
+						url: "/controller/member/idChk",
+						type: "get",
+						data : {"mid" : $("#mid").val()},
+						success : function(data){
+							if(data == 1){
+								alert("중복된 아이디입니다.");
+							}else if(data == 0 && value!="" && value==checkId){
+								alert("사용 가능한 아이디입니다.");
+								idchk= "ok";
+								
+							}else{
+								
+								alert("아이디를 확인해 주세요.");
+								
+							}
+						}
+					})
+				}
+				
+				function fn_nicChk(){
+					$.ajax({
+						url: "/controller/member/nicChk",
+						type: "get",
+						data : {"mnic" : $("#mnic").val()},
+						success : function(data){
+							if(data == 1){
+								alert("중복된 닉네임입니다.");
+							}else if(data == 0){
+								alert("사용 가능한 닉네임입니다.");
+								nichk= "ok";
+								
+							}
+						}
+					})
+				}
+				
+			</script>
+	
+
 </head>
 <body>
-<script type="text/javascript">
-		function fn_idChk(){
-			$.ajax({
-				url : "/controller/member/idChk.do",
-				type : "post",
-				dataType : "json",
-				data : {"mid" : $("#mid").val()},
-				success : function(data){
-					if(data == 1){
-						alert("중복된 아이디입니다.");
-					}else if(data == 0){
-						$("#idChk").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
-	</script>
+
 
 	<section>
         
@@ -50,10 +83,10 @@
                       <div class="modal-body p-5 pt-0">
                         
                         <div class="form-floating mb-3 id">
-                          <input type="text" class="form-control rounded-4 id" id="id" name="mid" onblur="checkFn('id')">
+                          <input type="text" class="form-control rounded-4 id id_input" id="mid" name="mid" onblur="checkFn('id')">
                           <label for="floatingInput">*아이디<span class="check"></span></label>
-                         
-                          <input type="button" class="btn btn-success" value="중복확인" onclick="fn_idChk()">
+                          <input type="button" class="btn btn-success" id="idCheck" value="중복확인" onclick="fn_idChk()">
+                          
                         </div>
                           <div class="form-floating mb-3 pwd">
                             <input type="password" class="form-control rounded-4" name="mpwd" onblur="checkFn('pwd')">
@@ -65,10 +98,10 @@
                           </div>
                            
                             <div class="form-floating mb-3 nickname">
-                            <input type="text" class="form-control rounded-4 nickname" id="floatingInput" name="mnic" onblur="checkFn('nickname')">
+                            <input type="text" class="form-control rounded-4 nickname mnic" id="mnic" name="mnic" onblur="checkFn('nickname')">
                             <label for="floatingInput">*닉네임<span class="check"></span></label>
                             
-                            <input type="button" class="btn btn-success" value="중복확인" onclick="idCheck(this)">
+                            <input type="button" class="btn btn-success" value="중복확인" onclick="fn_nicChk()">
                           </div>
                           <div class="form-floating mb-3 name">
                             <input type="text" class="form-control rounded-4" name="mname" onblur="checkFn('name')">
@@ -112,22 +145,12 @@
                           </div>
                           
                           
-                          <div class="form-floating mb-3">
-                              <label style="top: -15px;">성별</label>
-                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                              
-                              <input type="radio" class="btn-check me-auto" name="mgender" id="btnradio1" autocomplete="off" value="M" >
-                              <label class="btn btn-outline-success" for="btnradio1">남자</label>
-                              <input type="radio" class="btn-check" name="gender" id="btnradio2" autocomplete="off" value="W" >
-                              <label class="btn btn-outline-success" for="btnradio2">여자</label>
                           
-                        </div>
-                        </div>
                     
             
                         <div class="d-grid gap-2 col-6 mx-auto">
                   
-                      <button class="btn btn-primary" type="submit">회원가입</button>
+                      <button class="btn btn-primary" type="submit" onclick="submitFn();return false;">회원가입</button>
                   
                     </div>
                 
@@ -144,10 +167,13 @@
                 
         </section>
         
+        
+
+        
         <script>
           function checkFn(type){
             if(type == 'id'){
-                var checkId = /^[a-zA-Z0-9]{5,12}$/
+                var checkId = /^[a-z]+[a-z0-9]{5,15}/g;
                 var value = document.frm.mid.value;
                 var span = document.getElementsByClassName("id")[0].getElementsByTagName("span")[0];
                 if(value == ""){
@@ -159,7 +185,7 @@
                     span.style.color = "red";
                     span.style.display = "inline";
                 }else{
-                    span.textContent = "사용가능한 아이디입니다.";
+                    span.textContent = "올바른 형식입니다.";
                     span.style.color = "green";
                     span.style.display = "inline";
                 }
@@ -196,23 +222,7 @@
                     span.textContent = "";
                     span.style.display = "none";
                 }
-              }else if(type == 'nickname'){
-                var checkNickname = /^[a-z]+[a-z0-9]{2,7}/g;
-                var value = document.frm.mnic.value;
-                var span = document.getElementsByClassName("nickname")[0].getElementsByTagName("span")[0];
-                if(value == ""){
-                    span.textContent = "*필수";
-                    span.style.color = "red";
-                    span.style.display = "inline";
-                }else if(!checkNickname.test(value)){
-                    span.textContent = "*형식오류";
-                    span.style.color = "red";
-                    span.style.display = "inline";
-                }else{
-                   span.textContent = "사용가능한 닉네임입니다.";
-                    span.style.color = "green";
-                    span.style.display = "inline";
-                }
+              
             }else if(type == 'name'){
                 var checkName = /^[가-힣]/g;
                 var value = document.frm.mname.value;
@@ -278,10 +288,159 @@
                     span.textContent = "";
                     span.style.display = "none";
                 }
-            
             }
+            
         }
-        
+          function submitFn(){
+        	  
+        	  if(idchk=="ok" && nichk=="ok"){
+        	  
+				var result = true;
+				var checkId = /^[a-z]+[a-z0-9]{5,15}/g;
+				var value = document.frm.mid.value;
+				var span = document.getElementsByClassName("id")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					 result = false;
+				}else if(!checkId.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				
+				var checkPass = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+				value = document.frm.mpwd.value;
+				span = document.getElementsByClassName("pwd")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(!checkPass.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				
+				value = document.frm.mpwd.value;
+				var value2 = document.frm.repwd.value;
+				span = document.getElementsByClassName("repwd")[0].getElementsByTagName("span")[0];
+				if(value2 == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(value != value2){
+					span.textContent = "*비밀번호 불일치";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				
+				var checkName = /^[가-힣]/g;
+				value = document.frm.mname.value;
+				span = document.getElementsByClassName("name")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(!checkName.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				var checkBirth = /^[0-9]{6}/g;
+				value = document.frm.mbirth.value;
+				span = document.getElementsByClassName("birth")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(!checkBirth.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				
+				var checkEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/g;
+				value = document.frm.memail.value;
+				span = document.getElementsByClassName("email")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(!checkEmail.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				
+				
+				
+				var checkPhone = /^[0-9]{10,15}/g;
+				value = document.frm.mphone.value;
+				span = document.getElementsByClassName("phone")[0].getElementsByTagName("span")[0];
+				if(value == ""){
+					span.textContent = "*필수";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else if(!checkPhone3.test(value)){
+					span.textContent = "*형식오류";
+					span.style.color = "red";
+					span.style.display = "inline";
+					result = false;
+				}else{
+					span.textContent = "";
+					span.style.display = "none";
+				}
+				
+				if(result){
+					document.frm.submit();
+				}
+				
+        	  }else{
+        		  
+        		  alert("중복확인을 누르고 가입해 주세요.");
+        		  
+        		  
+        	  }
+        	  
+			}
 
         </script>
 	
@@ -336,8 +495,9 @@
 			        }).open();
 			    }
 			</script>
-	
+			
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
