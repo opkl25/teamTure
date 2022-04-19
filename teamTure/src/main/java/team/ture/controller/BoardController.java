@@ -280,6 +280,75 @@ public class BoardController {
 		
 	}
 	
+	/* 댓글 수정 업로드	 */
+	@RequestMapping(value="/breplyUpdate" , method = RequestMethod.POST)
+	@ResponseBody
+	public BreplyVO breplyUpdate(HttpServletRequest request, Model model, BreplyVO map) throws Exception {
+		
+		System.out.println("수정업로드 실행");
+		System.out.println(map.getImg());
+		System.out.println(map.getBrcontent());
+		System.out.println(map.getBrwriter());
+		System.out.println(map.getBrwdate());
+		
+		
+		String path = request.getSession().getServletContext().getRealPath("/resources/img/upload");
+		
+		
+		File dir = new File(path); 
+		if(!dir.exists()) { 
+			dir.mkdirs(); 
+		}
+		
+				
+		
+		
+		
+		
+		
+		System.out.println(map.getUploadFile());
+		
+		
+		
+				
+		MultipartFile file=  map.getUploadFile(); 
+		
+		  if(!file.getOriginalFilename().isEmpty()) {
+		  
+		  file.transferTo(new File(path, file.getOriginalFilename())); //업로드한 파일 카피
+		  model.addAttribute("msg", "File uploaded successfully.");
+		  map.setImg(file.getOriginalFilename());
+		  
+		  breplyService.updateReply(map);
+		  
+		  
+		  
+		  }else if(map.getImg()!=null) {
+		  
+		  
+		  breplyService.updateReply(map);
+		  
+		  
+		  }else {
+		  
+			  map.setImg("");
+		  
+		  breplyService.updateReply(map);
+		  
+		  
+		  
+		  }
+		 
+		
+		BreplyVO bro = breplyService.detail(map.getBridx());
+		
+		
+		System.out.println("리턴 bro");
+		return bro;
+		
+		
+	}
+	
 	
 	
 	

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.ture.util.PagingVO;
 import team.ture.vo.BoardVO;
 import team.ture.vo.SarchVO;
 
@@ -37,5 +38,15 @@ public class BoardDAO {
 	public int upload(BoardVO map) throws Exception{
 		return sqlSession.insert(Namespace+".insertBoard",map);
 	}
+	
+	public int countBoard() {
+		return sqlSession.selectOne(Namespace+".countBoard");
+	}
+	
+	public List<BoardVO> selectBoard(PagingVO vo){
+		return sqlSession.selectList(Namespace+".listBoard");
+	}
+	
+	
 	
 }

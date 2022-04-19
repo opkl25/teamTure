@@ -4,27 +4,83 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="team.ture.mapper.boardMapper">
+	
+	 <select id="countBoard" resultType="int">
+	 		SELECT COUNT(*) FROM BOARD	 
+	 </select>
 
      <select id="listBoard" resultType="boardVO">
-         SELECT bidx
-        	 , bsubject
-        	 , bcontent
-        	 , bwriter
-        	 , bwdate
-        	 , midx
-        	 
-          FROM board
-          WHERE delny != 'Y'
-          <if test="sarchType != null and sarchType.equals('bsubject')">
-          and bsubject like '%'||#{sarchValue}||'%' 
-          
-          
-          </if>
-          <if test="sarchType != null and sarchType.equals('bwriter')">
-          and bwriter like '%'||#{sarchValue}||'%'
-          </if>
-          
-          order by bidx desc
+     
+         							
+         	SELECT bidx
+         				,bsubject
+         				,bcontent
+         				,bwriter
+         				,bwdate
+         				,midx
+         									
+         		FROM BOARD
+         										
+         		WHERE delny != 'Y'
+				
+				<if test="sarchType != null and sarchType.equals('bsubject')">
+					and bsubject like '%'||#{sarchValue}||'%' 
+										          
+										          
+				</if>
+				<if test="sarchType != null and sarchType.equals('bwriter')">
+				    and bwriter like '%'||#{sarchValue}||'%'
+				</if>
+										          
+				order by bidx desc
+         										
+         										
+         		          
+    </select>
+    
+    <select id="selectBoard" resultType="boardVO">
+         
+         SELECT *
+         
+         			FROM (
+         			
+         					SELECT ROWNUM RN, A.bidx
+         											,bsubject
+         											,bcontent
+         											,bwriter
+         											,bwdate
+         											,midx
+         							FROM (
+         							
+         							
+         									SELECT bidx
+         											,bsubject
+         											,bcontent
+         											,bwriter
+         											,bwdate
+         											,midx
+         											
+         										FROM BOARD
+         										
+         										WHERE delny != 'Y'
+										          <if test="sarchType != null and sarchType.equals('bsubject')">
+										          and bsubject like '%'||#{sarchValue}||'%' 
+										          
+										          
+										          </if>
+										          <if test="sarchType != null and sarchType.equals('bwriter')">
+										          and bwriter like '%'||#{sarchValue}||'%'
+										          </if>
+										          
+										          order by bidx desc
+         										
+         										
+         										
+         										)A
+         				)
+         
+         WHERE RN BETWEEN #{start} AND #{end}
+                                    
           
     </select>
     

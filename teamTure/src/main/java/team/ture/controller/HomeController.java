@@ -84,13 +84,13 @@ public class HomeController {
 		return "member/create";
 	}
 	
-	@RequestMapping(value = "/member/nmypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/nmypage.do", method = RequestMethod.GET)
 	public String nmypage(Locale locale, Model model) {
 		
 		
 		
 		
-		return "member/nmypage";
+		return "mypage/nmypage";
 	}
 	@RequestMapping(value = "/member/mypage.do", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model, HttpServletRequest request) throws Exception {

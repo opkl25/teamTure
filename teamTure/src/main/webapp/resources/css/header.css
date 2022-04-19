@@ -30,6 +30,7 @@ footer{
 
 
 #boardtable{
+	width:100%;
 	background-color: #ecf0f1;
 }
 
@@ -225,7 +226,7 @@ footer{
 }
 
 
-.modal {
+#modalView {
     display: none; /* 모달창 숨겨 놓기 */
     position: fixed; 
     z-index: 1; /* 모달창을 제일 앞에 두기 */

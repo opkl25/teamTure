@@ -75,7 +75,8 @@
 	
 	<div class="container " style ="border :1px solid lightgray;">
 		<form action="#" class="mb-3" name="myform" id="myform" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="bidx" value="${vo.bidx }">
+			
+			<input type="hidden" name="bidx" value="${vo.bidx }">						
 			<input type="hidden" name="midx" value="${member.midx }">
 			
 			<c:choose>
@@ -89,6 +90,10 @@
 			
 			</c:choose>
 			
+			<div id="bridxReply">
+				
+			</div>
+			
 			
 		<div class="container d-flex flex-wrap ">
 		
@@ -98,8 +103,8 @@
 					<div class="inputArea">
 								 <label for="gdsImg" >이미지 첨부</label>
 								 <input type="file" id="gdsImg" name="uploadFile" style="display:none;"/>
-								 <input type="hidden" name="img" value="">
-								 <div class="select_img container"><img src=""  style="margin:20px 0; width:100%;"/></div>
+								 <input type="hidden" name="img" id="img" value="">
+								 <div class="select_img container"><img src="" id="originImg" style="margin:20px 0; width:100%;"/></div>
 								 
 								 <script>
 								  $("#gdsImg").change(function(){
@@ -126,7 +131,7 @@
 		</form>		
 		<div class="d-flex flex-wrap container justify-content-end mb-2">
 		
-				<div id="alert" class="me-auto" style="background:#f8f8ba; display:none;"><p>이미지 수정은 이미지를 클릭하십시요. </p></div>
+				<div id="alert" class="me-auto" style="background:#f8f8ba; display:none;"><p>이미지 수정은 이미지를 클릭하십시오. </p></div>
 				<div id="saveButton"><button type="button" class="btn btn-outline-info" onclick="replysave()" >저장</button></div>
 				
 		</div>
@@ -164,8 +169,8 @@
 							
 							<c:if test="${member.midx eq lo.midx}">
 							 			
-							 			<td>
-							 				<input type="hidden" name="bridx" value="${lo.bridx} }">
+							 			<td id="buttonReply">
+							 				<input type="hidden" name="bridx" value="${lo.bridx}">
 							 				<button onclick="modify(${lo.bridx},this)" class="btn btn-outline-info">수정</button>	 
 							 				<button onclick="deleteFn(${lo.bridx},this)" class="btn btn-outline-info">삭제</button>							 			
 							 			</td>
@@ -196,7 +201,7 @@
 		
 		</div>
 		
-		<div class="modal">
+		<div class="modal" id="modalView">
 				  <span class="close">&times;</span>
 				  <img class="modal_content">
 		</div>
@@ -268,7 +273,7 @@
 			
 			
 			var formData = new FormData($("#myform")[0]);
-						
+			console.log(formData);			
 		 $.ajax({
 			url: "/controller/board/breplyinsert",
 			type: "post",
@@ -359,12 +364,15 @@
 	}
 	
 	function modify(bridx,obj){
-		clickBtn = 1;
+		clickBtn = obj;
 		
 		var imgcheck = $(obj).parent().prev().find("img").attr("src");
 		
 		console.log(clickBtn);
 		
+	    
+	      $('html,body').animate({scrollTop:1500},300);
+	     
 					
 			if(imgcheck== null){
 					console.log("이미지 널");
@@ -372,29 +380,47 @@
 				var brcontent = $(obj).parent().prev().text();
 							
 				$("#reviewContents").val(brcontent);
-				$("#saveButton").html("<input type='button' value='수정' onclick='updateReply(this)' class='btn btn-outline-info'>");
+				$("#saveButton").html("<input type='button' value='수정' onclick='updateReply(this)' class='btn btn-outline-info'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'> ");
 				
 				
-				$(obj).parent().html("<input type='hidden' name='bridx' value='"+bridx+"'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'>");
+				/* $(obj).parent().html("<input type='hidden' name='bridx' value='"+bridx+"'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'>"); */
 				
 				$("#alert").css("display","block");
+				
+				
 							
 				}
 				else{
 					console.log("이미지 널이아닌값");
 					
 					var brcontent = $(obj).parent().prev().prev().text();
-					var imgtd = $(obj)
 					console.log(brcontent);
 					
+					
 					$("#reviewContents").val(brcontent);
-					$("#saveButton").html("<input type='button' value='수정' onclick='updateReply(this)' class='btn btn-outline-info'>");
+					$("#saveButton").html("<input type='button' value='수정' onclick='updateReply(this)' class='btn btn-outline-info'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'>");
 										
-					$(obj).parent().html("<input type='hidden' name='bridx' value='"+bridx+"'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'>");
+					/* $(obj).parent().html("<input type='hidden' name='bridx' value='"+bridx+"'> <input type='button' value='취소' onclick='cancleReply(this)' class='btn btn-outline-info'>"); */
 				
 					$("#alert").css("display","block");
+					
+					$("#originImg").attr("src",imgcheck); 
+					
+					$("#img").val();
+					
+					console.log(imgcheck);
+															
+					var list = imgcheck.split("/");
+																
+					$("#img").val(list[5]);
+									
+				
 			}
 			
+				
+			/* bridx value 값 넣기  */
+			
+			$("#bridxReply").html("<input type='hidden' name='bridx' value='"+bridx+"'>");
 			
 		
 		 
@@ -404,58 +430,22 @@
 	}
 	
 	function cancleReply(obj){
-		
-		var imgcheck = $(obj).parent().prev().find("img").attr("src");
-		
-		if(imgcheck == null){
-		
-		var originContent = $(obj).parent().prev().find("input[name='origin']").val();
-		var originBridx = $(obj).prev().val();
-		
-		
-		console.log("사진이 없을 경우");
-		
-		$(obj).parent().prev().html(originContent);
-		var html = "";
-			html += "<input type='button' value='수정' onclick='modify("+originBridx+",this)' class='btn btn-outline-info'>";
-			html += " <input type='button' value='삭제' onclick='deleteFn("+originBridx+",this)' class='btn btn-outline-info'>";
-			
-		$(obj).parent().html(html);
-		$("#alert").css("display","none");
-		
-		$("#reviewContents").val("");
-		$("#saveButton").html("<button type='button' class='btn btn-outline-info' onclick='replysave()' >저장</button>");
-		
-		
-		}else {
-			
-			var originContent = $(obj).parent().prev().prev().find("input[name='origin']").val();
-			var originBridx = $(obj).prev().val();
-			
-			console.log("사진이 있을경우");
-			
-			
-			
-			$(obj).parent().prev().prev().html(originContent);
-			
-			var html = "";
-				html += "<input type='button' value='수정' onclick='modify("+originBridx+",this)' class='btn btn-outline-info'>";
-				html += " <input type='button' value='삭제' onclick='deleteFn("+originBridx+",this)' class='btn btn-outline-info'>";
-				
-			$(obj).parent().html(html);
-			$("#alert").css("display","none");
-			
+					
 			$("#reviewContents").val("");	//리뷰 brcontent값 초기화 저장버튼 정상화
 			$("#saveButton").html("<button type='button' class='btn btn-outline-info' onclick='replysave()' >저장</button>");
-		}
+			$("#alert").css("display","none");
+			$("#img").val("");
+			$("#originImg").attr("src"," ");
+			$("#bridxReply").html("");
 		
 	}
 	
 	function updateReply(obj){
-		console.log("업데이트 리플 등록작업 실행");
+		
 		var YN;
 		
 		YN = confirm("수정하시겠습니까?");
+		
 		
 		if(YN){
 			
@@ -463,16 +453,18 @@
 				
 				var formData = new FormData($("#myform")[0]);
 				
-				$ajax({
+				console.log(formData);
+				$.ajax({
 					url: "/controller/board/breplyUpdate",
 					type: "post",
 					data: formData,
 					cache: false,
-					contnetType: false,
+					contentType: false,
 					processData: false,
 					success : function(data){
 						
 						console.log("댓글 저장 실행");
+						
 						
 					}
 				});

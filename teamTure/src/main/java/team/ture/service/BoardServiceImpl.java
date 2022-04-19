@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.ture.dao.BoardDAO;
+import team.ture.util.PagingVO;
 import team.ture.vo.BoardVO;
 import team.ture.vo.SarchVO;
 
@@ -48,6 +49,16 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.upload(map);
 	}
 	
+	
+	@Override
+	public int countBoard() {
+		return boardDao.countBoard();
+	}
+ 
+	@Override
+	public List<BoardVO> selectBoard(PagingVO vo) {
+		return boardDao.selectBoard(vo);
+	}
 	
 
 }
