@@ -12,14 +12,12 @@
 </head>
 <body>
 <%@ include file = "/resources/header.jsp" %>
-<div class="jumbotron container" style="
-    text-align: center;">
+<div class="jumbotron container" style="text-align: center;">
         <h1 class="display-4">마이페이지</h1>
         <p class="lead">로그인후 이용해 주세요.</p>
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/controller/login.do'">로그인</button>
-          <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/controller/member/create.do'">회원가입</button>
-          <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/controller/mypage/mypage.do'">mypagetest</button>
+          <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='/controller/login.do'">로그인</button>
+          <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='/controller/member/create.do'">회원가입</button>
         </div>
         
       </div>

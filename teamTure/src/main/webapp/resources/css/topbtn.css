@@ -1,8 +1,8 @@
 #back-to-top {
   display: inline-block;
-  background-color: #FF9800;
-  width: 50px;
-  height: 50px;
+  background-color: #00F5FF;
+  width: 80px;
+  height: 80px;
   text-align: center;
   border-radius: 4px;
   position: fixed;
@@ -13,15 +13,17 @@
   opacity: 0;
   visibility: hidden;
   z-index: 1000;
+ 
 }
 #back-to-top::after {
   content: "\f077";
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  font-size: 2em;
-  line-height: 50px;
+  font-size: 400%;
+  line-height: 70%;
   color: #fff;
+  
 }
 #back-to-top:hover {
   cursor: pointer;

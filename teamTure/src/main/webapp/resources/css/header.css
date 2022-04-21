@@ -98,7 +98,7 @@ footer{
 
 #jeonbukimg{
 	text-align:center;
-	background-color:aliceblue;
+	
 }
 
 #add{
@@ -202,11 +202,14 @@ footer{
 	font-weight:bold;
 	font-size: 20px;
 }
+.mid{
+	color:RoyalBlue;
+	font-weight:bold;
+}
+
 #logout{
 	border-radius:14px;
-	background-color:lightgray;
-	color:white;
-	border:none;
+	
 	
 }
 .id_already{
@@ -268,3 +271,21 @@ footer{
     cursor: pointer;
   }
 
+
+/* reply 버튼 크기 */
+#buttonReply{
+	width:7%;
+}
+
+
+/* 스윗 알럿 */
+.swal-footer {
+  background-color: rgb(245, 248, 250);
+  margin-top: 32px;
+  border-top: 1px solid #E9EEF1;
+  overflow: hidden;
+}
+
+svg{
+	cursor: pointer;
+}

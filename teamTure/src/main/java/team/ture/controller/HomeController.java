@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.ture.service.LocationService;
@@ -143,7 +144,7 @@ public class HomeController {
 					
 						  
 						  
-						  // 로그인 체크 입력한 mid , password 값이 membervVO 에 담긴 vo 값과 비교 
+						  // 濡쒓렇�씤 泥댄겕 �엯�젰�븳 mid , password 媛믪씠 membervVO �뿉 �떞湲� vo 媛믨낵 鍮꾧탳 
 					  } else if(vo.getMid() == mid &&  vo.getMpwd()== mpwd){
 						  System.out.println("2");
 						  session.setAttribute("member", login); 
@@ -195,7 +196,7 @@ public class HomeController {
 		
 		
 		if(memberService.findPwdCheck(memberVO)==0)  {
-		model.addAttribute("msg", "이메일과 아이디를 확인해주세요");
+		model.addAttribute("msg", "아이디와 이메일을 입력해주세요");
 		return "member/findPwdView";
 		}else {
 		model.addAttribute("member", memberService.findPwd(memberVO));
@@ -204,6 +205,14 @@ public class HomeController {
 		}
 	
 	}
+	
+	@RequestMapping(value="/memberSessionCheck.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String memberSessionCheck(HttpSession session) {
+		String sessionMid = (String)session.getAttribute("sessionMid");
+		return sessionMid;
+	}
+	
 	
 	
 	

@@ -65,11 +65,13 @@
 			
 				<button class="btn btn-outline-info me-auto" onclick="location.href='list.do'">목록으로</button>
 			
+			<c:if test="${member.midx != null}">
 				<button class="btn btn-outline-info" onclick="location.href='modify.do?bidx=${vo.bidx}'">수정</button>
 				<button class="btn btn-outline-info" onclick="del()">삭제</button>
 				<form name="frm" action="delete.do" method="post">
 					<input type="hidden" name="bidx" value="${vo.bidx}">
 				</form> 
+			</c:if>
 		</div>
 		
 	
@@ -95,7 +97,7 @@
 			</div>
 			
 			
-		<div class="container d-flex flex-wrap ">
+		<div class="container flex-wrap ">
 		
 			
 					
@@ -120,7 +122,12 @@
 								   $("input[name='uploadFile']").css('display','block');
 								  });
 								 </script>
-								 
+							<div class="container mb-3" style="text-align: end; display:none;" id="resetImg">
+							
+									<input type="button" onclick="resetImg(this)" value="첨부삭제" class="btn btn-outline-info">
+							
+							</div>
+							
 					</div>
 			
 			<div class="container">
@@ -171,8 +178,15 @@
 							 			
 							 			<td id="buttonReply">
 							 				<input type="hidden" name="bridx" value="${lo.bridx}">
-							 				<button onclick="modify(${lo.bridx},this)" class="btn btn-outline-info">수정</button>	 
-							 				<button onclick="deleteFn(${lo.bridx},this)" class="btn btn-outline-info">삭제</button>							 			
+							 				<%-- <button onclick="modify(${lo.bridx},this)" class="btn btn-outline-info">수정</button> --%>	
+							 				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16" onclick="modify(${lo.bridx},this)">
+  												<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+											</svg>
+											<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16" onclick="deleteFn(${lo.bridx},this)">
+											  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+											  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+											</svg> 
+							 				<%-- <button onclick="deleteFn(${lo.bridx},this)" class="btn btn-outline-info">삭제</button>	 --%>						 			
 							 			</td>
 							
 							</c:if>
@@ -256,86 +270,109 @@
 	
 	
 	function del(){
+		var YN;
+		
+		YN=confirm("정말로 삭제하시겠습니까?");
+		if(YN){
 		document.frm.submit();
+		
+		}
 	}
 	
 	
 	function replysave(){
-		var YN;
-			
-		YN=confirm("저장하시겠습니까?");
-			
-		if(YN){
-		
-		
-			if(check != ''){
-		
-			
-			
-			var formData = new FormData($("#myform")[0]);
-			console.log(formData);			
-		 $.ajax({
-			url: "/controller/board/breplyinsert",
-			type: "post",
-			/* data: $("form").serialize(), */
-			
-			data: formData,
-		 	cache: false,
-			contentType: false,
-			processData: false,
-			success : function(data){
 				
+		if(check != ''){
+		
+		swal({
+			  title: "저장하시겠습니까?",
+			  imageUrl: "",
+			  buttons: true,
+			  dangerMode: true,
+			})			
+		.then((willDelete) => {
+			  if (willDelete) {
+			    swal("댓글 저장 성공", {
+			      icon: "success",
+			    });
+			    
+			    var formData = new FormData($("#myform")[0]);
+				console.log(formData);			
+			 $.ajax({
+				url: "/controller/board/breplyinsert",
+				type: "post",
+				/* data: $("form").serialize(), */
 				
-				var html = "";					
+				data: formData,
+			 	cache: false,
+				contentType: false,
+				processData: false,
+				success : function(data){
 					
-					html += "<tr>";
-					html += "<th style='width:20%'>"+data.brwriter+" <small>("+data.brwdate+")</small></th>";
 					
-					if(data.img != ''){
-						html	 += "<td><p>"+data.brcontent+"</p></td>";
+					var html = "";					
 						
-						html	+= "<td style='width:20%'><img src='"+isrc+"/resources/img/upload/"+data.img+"' style='margin:20px 0; width:100%' id='reimg'/></td>";
-						html 	+= "<div class='model'>";
-						html	+= "<span class='close'>&times;</span>";
-						html 	+= "<img class='modal_content'>";
-						html 	+= "</div>";
+						html += "<tr>";
+						html += "<th style='width:20%'>"+data.brwriter+" <small>("+data.brwdate+")</small></th>";
 						
-						if(data.midx == check){
-						html 	+=  "<td><button onclick='modify("+data.bridx+",this)' class='btn btn-outline-info'>수정</button>"
-								+   " <button onclick='deleteFn("+data.bridx+",this)' class='btn btn-outline-info'>삭제</button></td>";
-						}
-						
-					}else{
-						html 	+= "<td colspan='2'><p>"+data.brcontent+"</p></td>";
-						
-						
-						if(data.midx == check){
+						if(data.img != ''){
+							html	 += "<td><p>"+data.brcontent+"</p></td>";
 							
-							html 	+= "<td><button onclick='modify("+data.bridx+",this)' class='btn btn-outline-info'>수정</button>"
-									+  " <button onclick='deleteFn("+data.bridx+",this)' class='btn btn-outline-info'>삭제</button></td>";
+							html	+= "<td style='width:20%'><img src='"+isrc+"/resources/img/upload/"+data.img+"' style='margin:20px 0; width:100%' id='reimg'/></td>";
+							html 	+= "<div class='model'>";
+							html	+= "<span class='close'>&times;</span>";
+							html 	+= "<img class='modal_content'>";
+							html 	+= "</div>";
+							
+							if(data.midx == check){
+							html 	+=  "<td id='buttonReply'><button onclick='modify("+data.bridx+",this)' class='btn btn-outline-info'>수정</button>"
+									+   " <button onclick='deleteFn("+data.bridx+",this)' class='btn btn-outline-info'>삭제</button></td>";
 							}
+							
+						}else{
+							html 	+= "<td colspan='2'><p>"+data.brcontent+"</p></td>";
+							
+							
+							if(data.midx == check){
+								
+								html 	+= "<td id='buttonReply'><button onclick='modify("+data.bridx+",this)' class='btn btn-outline-info'>수정</button>"
+										+  " <button onclick='deleteFn("+data.bridx+",this)' class='btn btn-outline-info'>삭제</button></td>";
+								}
+							
+						}
+						html += "</tr>";
 						
-					}
-					html += "</tr>";
-					
-					
-					$("#replyTbody").prepend(html);
-					
-					$("#myform")[0].reset();
+						
+						$("#replyTbody").prepend(html);
+						
+						$("#myform")[0].reset();
+							
 						
 					
-				
-				
-			}
-		 
-		});
+					
+				}
+			 
+			});
+			    
+			  } else {
+			    swal({
+			    	title: "저장을 취소하셨습니다."});
+			  }
+			});
+							
+			
+		
+			
+			
+			
 		 
 		}else{
-			alert("로그인후 이용해 주십시요.");
+			swal({
+				title: "로그인후 이용해 주십시요."});
 		}
 			
 			
-		}
+		
 		
 		
 	}
@@ -372,6 +409,10 @@
 		
 	    
 	      $('html,body').animate({scrollTop:1500},300);
+	      
+	      $("#resetImg").css("display","block");
+	      
+	      $("#gdsImg").val("");
 	     
 					
 			if(imgcheck== null){
@@ -437,6 +478,8 @@
 			$("#img").val("");
 			$("#originImg").attr("src"," ");
 			$("#bridxReply").html("");
+			$("#gdsImg").val("");
+			$("#resetImg").css("display","none");
 		
 	}
 	
@@ -453,7 +496,6 @@
 				
 				var formData = new FormData($("#myform")[0]);
 				
-				console.log(formData);
 				$.ajax({
 					url: "/controller/board/breplyUpdate",
 					type: "post",
@@ -462,9 +504,42 @@
 					contentType: false,
 					processData: false,
 					success : function(data){
+						/* 덧글 저장 실행 */
 						
-						console.log("댓글 저장 실행");
+						console.log(data.bridx);
 						
+						var bridxarr = $("input[name='bridx']").get();
+						var brcontentarr = $("input[name='brcontent']").get();
+						
+						console.log(bridxarr);
+						
+						
+						
+						
+						for(var i=0; i<bridxarr.length; i++){
+								
+							console.log(brcontentarr[i].val());
+							
+							if(bridxarr[i].value == data.bridx){
+								
+								
+								
+								 
+							
+						
+							}
+						}
+						
+						
+						
+						
+/* 						var FinBridx = $("input[name='bridx']").parent()[1];
+						var FinParent = $("input[name='bridx']").parent().val(); */
+												
+						/* console.log(FinBridx);
+						console.log(FinParent); */
+						
+						/* cancleReply(obj); */
 						
 					}
 				});
@@ -475,6 +550,16 @@
 			
 			
 			
+		
+	}
+	
+	
+	function resetImg(obj){
+		
+		$("#img").val("");
+		$("#originImg").attr("src"," ");
+		$("#gdsImg").val("");
+		
 		
 	}
 	
